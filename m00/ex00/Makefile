@@ -1,11 +1,11 @@
 SRCS = megaphone.cpp
 NAME = megaphone
-CC_FLAGS = -Wall -Wextra -Werror -std=c++98 megaphone.cpp
+CC_FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJS = ${SRCS:.c=.o}
 all:	${NAME}
 
-.c.o: ${SRCS}
-	c++ -c ${CC_FLAGS} -o $@ $<
+${NAME}:
+	c++ ${CC_FLAGS} ${SRCS} -o ${NAME}
 clean:
 	rm -f ${NAME}
 fclean:	clean
