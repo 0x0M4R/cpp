@@ -2,26 +2,44 @@
 void PhoneBook::add(int i)
 {
     contacts[i].id = i;
-    std::cout << "Enter firstname : ";
-    std::cin >> contacts[i].firstname;
-    std::cout << "Enter lastname : ";
-    std::cin >> contacts[i].lastname;
-    std::cout << "Enter nickname : ";
-    std::cin >> contacts[i].nickname;
-    std::cout << "Enter phonenumber : ";
-    std::cin >> contacts[i].phonenumber;
-    std::cout << "Enter darkestsecret : ";
-    std::cin >> contacts[i].darkestsecret;
-    size++;
+    for (int j=0;j<5;j++)
+    {
+        std::cout << "Enter " + types[j] + " : ";
+        std::getline(std::cin,contacts[i].details[j]);
+    }
+    if (size < 8)
+        size++;
 }
 void PhoneBook::search()
 {
-    for (int i=0; i< size; i++)
+    for (int i=0; i < size; i++)
     {
-    std::cout << std::setw(10) << contacts[i].id << '|';
-    (contacts[i].firstname.length() > 10) ? std::cout << std::setw(10) << contacts[i].firstname.substr(0,9) << ".|" : std::cout << std::setw(10) << contacts[i].firstname << '|';
-    (contacts[i].lastname.length() > 10) ? std::cout << std::setw(10) << contacts[i].lastname.substr(0,9) << ".|" : std::cout << std::setw(10) << contacts[i].lastname << '|';
-    (contacts[i].nickname.length() > 10) ? std::cout << std::setw(10) << contacts[i].nickname.substr(0,9) << ".|" : std::cout << std::setw(10) << contacts[i].firstname << "|\n";
+        std::cout << std::setw(10) << contacts[i].id << '|';
+        for (int j=0; j < 3;j++)
+        {
+            contacts[i].details[j].length() >= 10 ?
+            std::cout << std::setw(10) << contacts[i].details[j].substr(0,9) + '.' << "|" :
+            std::cout << std::setw(10) << contacts[i].details[j] << '|';
+        }
+        std::cout << '\n';
+    }
+    if (size > 0)
+    {
+        std::string input;
+        int index;
+        std::cout << "Enter index of contact to display : ";
+        std::getline(std::cin, input);
+        try{ index = std::stoi(input);}
+        catch (...) {
+            std::cout << "Error: input is not number \n";
+            return ;}
+        if(index < size)
+        {
+            for (int j=0;j<5;j++)
+                std::cout << contacts[index].details[j] << std::endl;
+        }
+        else
+            std::cout << "Error: input is out of range \n";
     }
 }
 int main()
@@ -29,20 +47,25 @@ int main()
     int i = 0;
     PhoneBook phone;
     phone.size = 0;
+    std::string command;
+    phone.types[0] = "firstname";
+    phone.types[1] = "lastname";
+    phone.types[2] = "nickname";
+    phone.types[3] = "phonenumber";
+    phone.types[4] = "darkestsecret"; 
     while(1)
     {
-        std::string command;
         std::cout << "Enter command : ";
-        std::cin >> command;
+        std::getline(std::cin, command);
         if (command == "ADD")
         {
             phone.add(i);
             i++;
+            if (i == 8)
+                i=0;
         }
         else if (command == "SEARCH")
-        {
             phone.search();
-        }
         else if (command == "EXIT")
         {
             return (1);

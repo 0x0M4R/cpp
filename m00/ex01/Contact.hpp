@@ -4,5 +4,5 @@ class Contact
 {
     public:
         int id;
-        std::string firstname, lastname, nickname, phonenumber, darkestsecret;
+        std::string details[5];
 };
