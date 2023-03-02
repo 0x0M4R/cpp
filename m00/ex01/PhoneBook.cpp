@@ -1,12 +1,10 @@
 #include "PhoneBook.hpp"
+#include <limits>
 void PhoneBook::add(int i)
 {
     contacts[i].id = i;
     for (int j=0;j<5;j++)
-    {
-        std::cout << "Enter " + types[j] + " : ";
-        std::getline(std::cin,contacts[i].details[j]);
-    }
+        contacts[i].details[j] = get_input("Enter " + types[j] + " : ");
     if (size < 8)
         size++;
 }
@@ -27,8 +25,7 @@ void PhoneBook::search()
     {
         std::string input;
         int index;
-        std::cout << "Enter index of contact to display : ";
-        std::getline(std::cin, input);
+        input = get_input("Enter index of contact to display : ");
         try{ index = std::stoi(input);}
         catch (...) {
             std::cout << "Error: input is not number \n";
@@ -41,6 +38,23 @@ void PhoneBook::search()
         else
             std::cout << "Error: input is out of range \n";
     }
+}
+
+std::string get_input(std::string msg)
+{
+    std::string input = "";
+    while(input.length() == 0)
+    {
+        std::cout << msg;
+        std::getline(std::cin, input);
+        if (std::cin.eof())
+        {
+            clearerr(stdin);
+            std::cin.clear();
+            std::cout << std::endl;
+        }
+    }
+    return input;
 }
 int main()
 {
@@ -55,8 +69,7 @@ int main()
     phone.types[4] = "darkestsecret"; 
     while(1)
     {
-        std::cout << "Enter command : ";
-        std::getline(std::cin, command);
+        command = get_input("Enter command : ");
         if (command == "ADD")
         {
             phone.add(i);

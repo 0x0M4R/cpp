@@ -1,4 +1,11 @@
-#include "Contact.hpp"
+#include <iostream>
+#include <iomanip>
+class Contact
+{
+    public:
+        int id;
+        std::string details[5];
+};
 class PhoneBook
 {
     public:
@@ -8,3 +15,4 @@ class PhoneBook
         void search();
         int size;
 };
+std::string get_input(std::string msg);
