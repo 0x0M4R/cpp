@@ -1,13 +1,12 @@
 #include <iostream>
-#include <iomanip>
 class Zombie
 {
     private:
         std::string name;
     public:
+        Zombie(std::string name);
+		~Zombie(void);
         void announce(void);
-        std::string getName();
-        void setName(std::string name);
 };
 
 Zombie* newZombie( std::string name );
