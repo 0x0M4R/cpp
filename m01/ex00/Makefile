@@ -1,5 +1,5 @@
-SRCS = main.cpp phonebook.cpp contact.cpp
-NAME = zombie
+SRCS = main.cpp Zombie.cpp randomChump.cpp
+NAME = phonebook
 CC_FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJS = ${SRCS:.c=.o}
 all:	${NAME}
