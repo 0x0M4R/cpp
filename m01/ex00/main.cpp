@@ -1,5 +1,9 @@
 #include "Zombie.hpp"
-int main()
+
+int main(void)
 {
-    randomChump("omar");
+    Zombie *omar = newZombie("Omar");
+    omar->announce();
+    randomChump("zomar");
+    delete omar;
 }

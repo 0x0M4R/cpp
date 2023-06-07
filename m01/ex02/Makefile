@@ -1,4 +1,4 @@
-SRCS = main.cpp Zombie.cpp randomChump.cpp newZombie.cpp
+SRCS = main.cpp
 NAME = zombie
 CC_FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJS = ${SRCS:.c=.o}
