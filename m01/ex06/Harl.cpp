@@ -35,24 +35,24 @@ void Harl::complain( std::string level )
 
 	for ( int i = 0; i < 4; i++ )
 	{
-        if( level == levels[i] )
-        {
-            switch( i )
-            {
-                case 0:
-                    ( this->*fn[0] )();
-                    std::cout << std::endl;
-                case 1:
-                    ( this->*fn[1] )();
-                    std::cout << std::endl;
-                case 2:
-                    ( this->*fn[2] )();
-                    std::cout << std::endl;
-                case 3:
-                    ( this->*fn[3] )();
-                    std::cout << std::endl;
-                    break ;
-            }
-        }
+		if( level == levels[i] )
+		{
+			switch( i )
+			{
+				case 0:
+					( this->*fn[0] )();
+					std::cout << std::endl;
+				case 1:
+					( this->*fn[1] )();
+					std::cout << std::endl;
+				case 2:
+					( this->*fn[2] )();
+					std::cout << std::endl;
+				default:
+					( this->*fn[3] )();
+					std::cout << std::endl;
+					break ;
+			}
+		}
 	}
 }
