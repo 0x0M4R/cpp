@@ -1,23 +1,24 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB( std::string name ) {
+HumanB::HumanB( std::string name )
+{
 	this->name = name;
 	this->weapon = NULL;
-	return ;
 }
 
-HumanB::~HumanB( void ) {
-	return ;
+HumanB::~HumanB( void )
+{
 }
 
-void	HumanB::setWeapon( Weapon& weapon ) {
+void	HumanB::setWeapon( Weapon& weapon )
+{
 	this->weapon = &weapon;
 }
 
-void	HumanB::attack( void ) {
-	std::string		weaponType;
-
-	this->weapon ? weaponType = weapon->getType() : weaponType = "hands";
-	std::cout << this->name << " attacks with their "
-		<< weaponType << std::endl;
+void	HumanB::attack( void )
+{
+	if( this->weapon )
+		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
+	else
+		std::cout << this->name << " attacks with their nothing" << std::endl;
 }

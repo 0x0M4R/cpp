@@ -1,6 +1,5 @@
 #include"Zombie.hpp"
 
-
 int main() 
 {
 	int j = 12;
