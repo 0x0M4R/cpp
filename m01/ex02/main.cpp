@@ -1,15 +1,13 @@
 #include <iostream>
-
-int	main( void ) {
-	std::string		string = "HI THIS BRAIN";
-	std::string*	stringPtr = &string;
-	std::string&	stringRef = string;
-
-	std::cout << "string memory address:\t\t" << &string << std::endl;
-	std::cout << "stringPtr memory address:\t" << stringPtr << std::endl;
-	std::cout << "stringRef memory address:\t" << &stringRef << std::endl;
-
-	std::cout << "string value:\t\t\t" << string << std::endl;
-	std::cout << "stringPtr value:\t\t" << *stringPtr << std::endl;
-	std::cout << "stringRef value:\t\t" << stringRef << std::endl;
+int main()
+{
+    std::string s= "HI THIS IS BRAIN";
+    std::string *stringPTR = &s;
+    std::string &stringREF = s;
+    std::cout << "address of string : " << &s << std::endl;
+    std::cout << "address using stringPTR : " << stringPTR << std::endl;
+    std::cout << "address using stringREF : " << &stringREF << std::endl;
+    std::cout << "string using stringPTR : " << *stringPTR << std::endl;
+	std::cout << "string using stringREF : " << stringREF << std::endl;
+    return 0;
 }

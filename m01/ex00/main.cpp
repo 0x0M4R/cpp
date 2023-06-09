@@ -1,9 +1,10 @@
-#include "Zombie.hpp"
+#include"Zombie.hpp"
 
-int main(void)
-{
-    Zombie *omar = newZombie("Omar");
-    omar->announce();
-    randomChump("zomar");
-    delete omar;
+int main() {
+	
+	Zombie*  z = newZombie( "omar" );
+	z->announce();
+	randomChump( "who" );
+
+	delete z;
 }
