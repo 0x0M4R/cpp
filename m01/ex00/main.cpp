@@ -5,6 +5,10 @@ int main()
 	Zombie*  z = newZombie( "omar" );
 	z->announce();
 	randomChump( "who" );
-	z->announce();
+
+	// Zombie x;
+	// x.announce();
+	// x.setName("zomar");
+	// x.announce();
 	delete z;
 }
