@@ -4,7 +4,7 @@
 
 int	replace( std::string filename, std::string s1, std::string s2 )
 {
-	std::ifstream input_file( filename );
+	std::ifstream input_file( filename.c_str() );
 	if( s1.length() == 0 || s2.length() == 0)
     {
         std::cout << "Error: invalid string parameters" << std::endl;
@@ -24,7 +24,7 @@ int	replace( std::string filename, std::string s1, std::string s2 )
 		}
 		else
 		{
-			std::ofstream output_file( filename + ".replace" );
+			std::ofstream output_file( filename.append( ".replace").c_str() );
 			while ( input_file.good() && output_file.good() )
 			{
 				std::string line;
@@ -46,7 +46,7 @@ int	replace( std::string filename, std::string s1, std::string s2 )
 		}
 	}
 	else
-		std::cout << "Error: " << strerror( errno ) << std::endl;
+		std::cout << "Error: failed to read file" << std::endl;
 	return ( 0 );
 }
 

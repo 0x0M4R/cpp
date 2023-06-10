@@ -42,12 +42,15 @@ void Harl::complain( std::string level )
 				case 0:
 					( this->*fn[0] )();
 					std::cout << std::endl;
+					__attribute__ ((fallthrough));
 				case 1:
 					( this->*fn[1] )();
 					std::cout << std::endl;
+					__attribute__ ((fallthrough));
 				case 2:
 					( this->*fn[2] )();
 					std::cout << std::endl;
+					__attribute__ ((fallthrough));
 				default:
 					( this->*fn[3] )();
 					std::cout << std::endl;
