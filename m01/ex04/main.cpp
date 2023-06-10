@@ -5,9 +5,14 @@
 int	replace( std::string filename, std::string s1, std::string s2 )
 {
 	std::ifstream input_file( filename );
-	if ( !input_file )
+	if( s1.length() == 0 || s2.length() == 0)
+    {
+        std::cout << "Error: invalid string parameters" << std::endl;
+		return( -1 );
+    }
+    if ( !input_file )
 	{
-		std::cerr << "Error: file doesnt exist / cannot be opened" << std::endl;
+		std::cout << "Error: file doesnt exist / cannot be opened" << std::endl;
 		return( -1 );
 	}
 	if ( input_file.good() )
@@ -29,7 +34,7 @@ int	replace( std::string filename, std::string s1, std::string s2 )
 				{
 					line.erase( word, s1.length() );
 					line.insert( word, s2 );
-					word = line.find( s1, word );
+					word = line.find( s1, word + s2.length()  );
 				}
 				output_file << line;
 				if (input_file.eof())
@@ -51,7 +56,7 @@ int	main( int argc, char **argv )
 		return ( replace( argv[1], argv[2], argv[3] ) );
 	else
 	{
-		std::cerr << "Error: wrong parameters \nUsage: ./sed <filename> <s1> <s2>" << std::endl;
+		std::cout << "Error: wrong number of parameters \nUsage: ./sed <filename> <s1> <s2>" << std::endl;
 		return( -1 );
 	}
 }
