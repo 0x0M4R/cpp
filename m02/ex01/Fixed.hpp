@@ -2,16 +2,17 @@
 # define FIXED_HPP
 
 # include <iostream>
-#include <cmath>
+# include <cmath>
+
 class	Fixed
 {
 	private:
 		int					value;
-		static int const	bits=8;
+		static int const	bits = 8;
 	public:
-		Fixed(void);
-		Fixed(int const raw);
-		Fixed(float const raw);
+		Fixed( void );
+		Fixed( int const raw );
+		Fixed( float const raw );
         ~Fixed(void);
 		Fixed(Fixed const &copy);
 		float toFloat( void ) const;

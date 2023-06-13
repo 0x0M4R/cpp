@@ -15,7 +15,7 @@ Fixed::Fixed(Fixed const &copy)
 }
 Fixed & Fixed::operator=(Fixed const &rhs)
 {
-    std::cout << "Assignation operator called" << std::endl;
+    std::cout << "Copy assignment operator called" << std::endl;
     this->value = rhs.getRawBits();
 
 	return *this;
