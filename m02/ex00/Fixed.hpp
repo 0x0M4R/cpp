@@ -10,9 +10,9 @@ class	Fixed
 		static int const	bits = 8;
 	public:
 		Fixed( void );
-        ~Fixed( void );
+		~Fixed( void );
 		Fixed( Fixed const &copy );
-        Fixed & operator = ( Fixed const &rhs );
+		Fixed &operator=( Fixed const &rhs );
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
 };
