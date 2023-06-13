@@ -13,13 +13,13 @@ class	Fixed
 		Fixed( void );
 		Fixed( int const raw );
 		Fixed( float const raw );
-        ~Fixed(void);
-		Fixed(Fixed const &copy);
+		~Fixed( void );
+		Fixed( Fixed const &copy );
 		float toFloat( void ) const;
 		int toInt( void ) const;
-        Fixed& operator=(Fixed const &rhs);
-		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
+		Fixed& operator=( Fixed const &rhs );
+		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
 };
-std::ostream& operator<<(std::ostream& os, Fixed const &rhs);
+std::ostream& operator<<( std::ostream& os, Fixed const &rhs );
 #endif

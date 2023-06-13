@@ -10,8 +10,9 @@ ${NAME}: ${OBJS}
 	${CXX} ${CXXFLAGS} ${SRCS} -o ${NAME}
 
 clean:
-	rm -f ${NAME} ${OBJS}
+	rm -f ${OBJS}
 
 fclean:	clean
+	rm -f ${NAME}
 
 re:	fclean all
