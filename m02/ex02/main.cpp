@@ -2,8 +2,8 @@
 
 int main( void ) 
 {
-	Fixed a( 10 );
-	Fixed b( 10 );
+	Fixed a( 25.5f );
+	Fixed b( 0 );
 	std::cout << "a+b : "<< a+b << std::endl;
 	std::cout << "a/b : "<< a/b << std::endl;
 	std::cout << "a*b : " << a*b << std::endl;

@@ -51,6 +51,11 @@ Fixed Fixed::operator*(Fixed const &rhs)
 
 Fixed Fixed::operator/(Fixed const &rhs)
 {
+	if(rhs.toFloat() == 0)
+	{
+		std::cout <<"undefined: cannot divide by ";
+		return Fixed();
+	}
 	return Fixed(this->toFloat() / rhs.toFloat());
 }
 
