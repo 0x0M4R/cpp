@@ -8,6 +8,6 @@ int main( void )
 	ct.takeDamage(2);
 	ct.beRepaired(2);
 	ScavTrap g("miley");
-	g.attack("robert");
+	g.attack("joe");
 	g.guardGate();
 }

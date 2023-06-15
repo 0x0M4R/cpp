@@ -29,6 +29,7 @@ ClapTrap::ClapTrap( ClapTrap const & copy )
 
 ClapTrap &ClapTrap::operator=( ClapTrap const &copy )
 {
+	std::cout << "ClapTrap: assignment overload called" << std::endl;
 	name = copy.name;
 	hitpoints = copy.hitpoints;
 	energypoints = copy.energypoints;

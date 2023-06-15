@@ -30,6 +30,7 @@ ScavTrap::ScavTrap( ScavTrap const &copy )
 
 ScavTrap &ScavTrap::operator=( ScavTrap const &copy )
 {
+	std::cout << "ScavTrap: assignment overload called" << std::endl;
 	name = copy.name;
 	hitpoints = copy.hitpoints;
 	energypoints = copy.energypoints;

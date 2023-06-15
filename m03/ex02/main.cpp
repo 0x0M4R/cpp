@@ -7,7 +7,7 @@ int main( void ) {
     ct.takeDamage(2);
     ct.beRepaired(2);
     ScavTrap g("scaviee");
-    g.attack("robert");
+    g.attack("joe");
     g.guardGate();
     FragTrap f("fraggie");
     f.attack("scavie");
