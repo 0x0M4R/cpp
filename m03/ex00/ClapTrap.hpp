@@ -1,5 +1,5 @@
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
 
 #include <iostream>
 class ClapTrap
@@ -15,7 +15,7 @@ class ClapTrap
 		ClapTrap();
 		~ClapTrap();
 		ClapTrap( ClapTrap const &copy );
-		ClapTrap& operator=( ClapTrap const &cp );
+		ClapTrap& operator=( ClapTrap const &copu );
 		void attack( const std::string& target );
 		void takeDamage( unsigned int amount );
 		void beRepaired( unsigned int amount );

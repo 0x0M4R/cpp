@@ -26,13 +26,12 @@ ClapTrap::ClapTrap( ClapTrap const & copy )
 	std::cout << "ClapTrap: copy Constructor called" << std::endl;
 	*this = copy;
 }
-
-ClapTrap &ClapTrap::operator=( ClapTrap const &cp )
+ClapTrap &ClapTrap::operator=( ClapTrap const &copy )
 {
-	name = cp.name;
-	hitpoints = cp.hitpoints;
-	energypoints = cp.energypoints;
-	attackdamage = cp.attackdamage;
+	name = copy.name;
+	hitpoints = copy.hitpoints;
+	energypoints = copy.energypoints;
+	attackdamage = copy.attackdamage;
 	return ( *this );
 }
 
