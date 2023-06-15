@@ -2,7 +2,7 @@
 #define CLAPTRAP_HPP
 
 #include <iostream>
-class ClapTrap
+class ClapTrap 
 {
 	protected:
 		std::string name;
@@ -12,6 +12,7 @@ class ClapTrap
 		
 	public:
 		ClapTrap( std::string name );
+		ClapTrap( std::string *name );
 		ClapTrap();
 		~ClapTrap();
 		ClapTrap( ClapTrap const &copy );

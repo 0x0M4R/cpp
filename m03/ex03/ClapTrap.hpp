@@ -12,6 +12,7 @@ class ClapTrap
 		
 	public:
 		ClapTrap( std::string name );
+		ClapTrap( std::string *name );
 		ClapTrap();
 		~ClapTrap();
 		ClapTrap( ClapTrap const &copy );

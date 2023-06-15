@@ -9,7 +9,26 @@ ClapTrap::ClapTrap()
 }
 ClapTrap::ClapTrap( std::string name )
 {
+	if (name.length() == 0)
+	{
+		std::cout << "ClapTrap: name is empty " << std::endl;
+		exit(1);
+	}
 	this->name = name;
+	hitpoints = 10;
+	energypoints = 10;
+	attackdamage = 0;
+	std::cout << "ClapTrap: Constructor called for " << this->name << std::endl;
+}
+
+ClapTrap::ClapTrap( std::string *name )
+{
+	if( name == NULL)
+	{
+		std::cout << "ClapTrap: Error name is NULL " << std::endl;
+		exit(1);
+	}
+	this->name = *name;
 	hitpoints = 10;
 	energypoints = 10;
 	attackdamage = 0;

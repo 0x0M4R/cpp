@@ -23,6 +23,20 @@ FragTrap::FragTrap( std::string name ) : ClapTrap( name )
 	this->attackdamage = 30;
 }
 
+FragTrap::FragTrap( std::string *name ) : ClapTrap ( name )
+{
+	if( name == NULL)
+	{
+		std::cout << "FragTrap: Error name is NULL " << std::endl;
+		exit(1);
+	}
+	this->name = *name;
+	hitpoints = 10;
+	energypoints = 10;
+	attackdamage = 0;
+	std::cout << "FragTrap: Constructor called for " << this->name << std::endl;
+}
+
 FragTrap::FragTrap( FragTrap const & copy )
 {
 	std::cout << "FragTrap: copy Constructor called" << std::endl;

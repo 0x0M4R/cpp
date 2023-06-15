@@ -23,6 +23,20 @@ ScavTrap::ScavTrap( std::string name ) : ClapTrap( name )
 	attackdamage = 20;
 }
 
+ScavTrap::ScavTrap( std::string *name ) : ClapTrap ( name )
+{
+	if( name == NULL)
+	{
+		std::cout << "ScavTrap: Error name is NULL " << std::endl;
+		exit(1);
+	}
+	this->name = *name;
+	hitpoints = 10;
+	energypoints = 10;
+	attackdamage = 0;
+	std::cout << "ScavTrap: Constructor called for " << this->name << std::endl;
+}
+
 ScavTrap::ScavTrap( ScavTrap const &copy )
 {
 	*this = copy;

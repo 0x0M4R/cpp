@@ -2,7 +2,7 @@
 
 int main( void ) 
 {
-    ClapTrap ct("billy");
+    ClapTrap ct(NULL);
     ClapTrap h("joe");
     for (int i = 0; i < 11; i++)
     {
