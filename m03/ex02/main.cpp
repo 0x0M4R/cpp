@@ -11,5 +11,8 @@ int main( void ) {
     g.guardGate();
     FragTrap f("fraggie");
     f.attack("scavie");
+    FragTrap a(f);
+    //a = f;
     f.highFivesGuys();
+    a.highFivesGuys();
 }
