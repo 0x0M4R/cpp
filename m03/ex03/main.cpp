@@ -2,7 +2,7 @@
 
 int main( void ) {
     std::cout<< "ClapTrap test:" << std::endl;
-    ClapTrap ct(NULL);
+    ClapTrap ct("");
     ct.attack("joe");
     ct.takeDamage(2);
     ct.beRepaired(2);
