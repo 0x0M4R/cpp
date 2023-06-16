@@ -2,18 +2,9 @@
 #include "FragTrap.hpp"
 int main( void ) 
 {
-	ClapTrap ct("clappy");
-	ClapTrap h("joe");
-	ct.attack("joe");
-	ct.takeDamage(2);
-	ct.beRepaired(2);
-	ScavTrap g("scaviee");
-	g.attack("joe");
-	g.guardGate();
-	FragTrap f(NULL);
+	FragTrap f("fraggie");
 	f.attack("scavie");
-	FragTrap a(f);
-	//a = f;
+    f.takeDamage(2);
+	f.beRepaired(2);
 	f.highFivesGuys();
-	a.highFivesGuys();
 }
