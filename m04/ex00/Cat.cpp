@@ -6,7 +6,7 @@ Cat::Cat()
 	type = "Cat";
 }
 
-Cat::Cat( Cat const & copy )
+Cat::Cat( Cat const & copy ) : Animal(copy)
 {
 	std::cout << "Cat copy constructor called !"<<std::endl;
 	*this = copy;

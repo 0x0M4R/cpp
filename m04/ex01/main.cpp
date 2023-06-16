@@ -5,38 +5,24 @@
 int main()
 {
     //create and fill array of animal objects half dogs half cats
-    //const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    //delete j;
-    delete i;
+    std::cout << "Constructor and Deconstructor test:\n" << std::endl;
+    Animal *arr[2]; 
+    for (int i = 0; i < 2; i++)
+    {
+        if(i < 1)
+            arr[i] = new Cat();
+        else
+            arr[i] = new Dog();
+    }
+    for (int i = 0; i < 2; i++)
+        delete arr[i];
     
-    //make sure copies are deep copies()
-    /*
-    std::cout << "Animal Class:" << std::endl;
-    const Animal* meta = new Animal();
-    std::cout << meta->getType() << std::endl;
-    meta->makeSound();
-    delete meta;
-    std::cout << std::endl;
-
-    std::cout << "Dog Class:" << std::endl;
-    const Animal* doug = new Dog();
-    std::cout << doug->getType() << std::endl;
-    doug->makeSound();
-    delete doug;
-    std::cout << std::endl;
-
-    std::cout << "WrongCat Class:" << std::endl;
-    const Animal* mila = new Cat();
-    std::cout << mila->getType() << std::endl;
-    mila->makeSound();
-    delete mila;
-    std::cout << std::endl;
-    
-    std::cout << "Cat Class:" << std::endl;
-    const WrongAnimal* wcat = new WrongCat();
-    std::cout << wcat->getType() << std::endl;
-    wcat->makeSound();
-    delete wcat;
-    */
+    std::cout << "\nDeep copy test:\n" << std::endl;
+    Dog copy;
+    {
+        Dog deep = copy;
+        std::cout << std::endl;
+        std::cout << "copied dog idea before deletion: "<<deep.getBrain()->getIdea(1) << std::endl;
+    }
+    std::cout << "copied dog idea after deletion: "<< copy.getBrain()->getIdea(1) << std::endl;
 }
