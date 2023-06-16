@@ -24,7 +24,7 @@ WrongCat &WrongCat::operator=( WrongCat const &copy )
 }
 
 void WrongCat::makeSound() const 
-{ 
+{
 	std::cout << "Meowing like a wrong cat! meew!"<<std::endl;
 }
 
