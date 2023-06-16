@@ -4,11 +4,12 @@
 #include "Brain.hpp"
 class Cat : public Animal {
     private:
-    class Brain* catbrain;
+        class Brain* catbrain;
     public:
-    Cat();
-    Cat(Cat const & copy);
-    ~Cat();
-    void makeSound() const;
+        Cat();
+        Cat(Cat const & copy);
+        ~Cat();
+        Cat& operator=( Cat const &copy );
+        void makeSound() const;
 };
 #endif

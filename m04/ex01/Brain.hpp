@@ -9,5 +9,6 @@ public:
     Brain();
     Brain(Brain const & copy);
     ~Brain();
+    Brain& operator=( Brain const &copy );
 };
 #endif

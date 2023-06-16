@@ -13,3 +13,11 @@ WrongCat::~WrongCat()
 {
     std::cout << "WrongCat deconstructor called !"<<std::endl;
 }
+
+WrongCat &WrongCat::operator=( WrongCat const &copy )
+{
+	std::cout << "WrongCat assignment overload called" << std::endl;
+	type = copy.type;
+	return (*this);
+}
+

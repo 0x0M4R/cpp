@@ -13,6 +13,12 @@ WrongAnimal::~WrongAnimal()
 {
     std::cout << "WrongAnimal deconstructor called !"<<std::endl;
 }
+WrongAnimal &WrongAnimal::operator=( WrongAnimal const &copy )
+{
+	std::cout << "WrongAnimal assignment overload called" << std::endl;
+	type = copy.type;
+	return (*this);
+}
 void WrongAnimal::makeSound() const
 {
     std::cout << "WrongAnimal sound !"<<std::endl;

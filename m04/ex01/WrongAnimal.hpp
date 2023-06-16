@@ -9,6 +9,7 @@ public:
     WrongAnimal();
     WrongAnimal(WrongAnimal const & copy);
     virtual ~WrongAnimal();
+    WrongAnimal& operator=( WrongAnimal const &copy );
     virtual void makeSound() const;
     std::string getType() const; 
 };
