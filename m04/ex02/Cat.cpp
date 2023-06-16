@@ -5,16 +5,25 @@ Cat::Cat()
     this->type="Cat";
     this->catbrain= new Brain();
 }
-Cat::Cat(Cat const & copy)
+
+Cat::Cat(Cat const & copy) : Animal(copy)
 {
-    std::cout << "Cat copy constructor called !"<<std::endl;
-    *this=copy;
+    *this = copy;
 }
-Cat::~Cat()
+
+Cat::~Cat() 
 {
     std::cout << "Cat deconstructor called !"<<std::endl;
      delete catbrain;
 
+}
+Cat &Cat::operator=( Cat const &copy )
+{
+	std::cout << "Cat assignment overload called" << std::endl;
+	type = copy.type;
+    catbrain = new Brain (*copy.catbrain);
+    //delete &copy;
+	return (*this);
 }
 void Cat::makeSound() const 
 {
