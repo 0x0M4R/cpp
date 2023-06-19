@@ -8,21 +8,28 @@ Cat::Cat()
 
 Cat::Cat(Cat const & copy) : Animal(copy)
 {
-	*this = copy;
+	std::cout << "Cat copy constructor called !" << std::endl;
+	type = copy.type;
+	catbrain = new Brain ( *copy.catbrain );
 }
 
 Cat::~Cat() 
 {
 	std::cout << "Cat deconstructor called !" << std::endl;
-	 delete catbrain;
+	delete catbrain;
 
 }
 
 Cat &Cat::operator=( Cat const &copy )
 {
 	std::cout << "Cat assignment overload called" << std::endl;
-	type = copy.type;
-	catbrain = new Brain ( *copy.catbrain );
+	if (this != &copy)
+	{
+		if (this->catbrain)
+			delete this->catbrain;
+		type = copy.type;
+		catbrain = new Brain ( *copy.catbrain );
+	}
 	return ( *this );
 }
 

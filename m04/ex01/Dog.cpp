@@ -10,7 +10,8 @@ Dog::Dog()
 Dog::Dog( Dog const & copy ) : Animal( copy )
 {
 	std::cout << "Dog copy constructor called !" << std::endl;
-	*this = copy;
+	type = copy.type;
+	dogbrain = new Brain ( *copy.dogbrain );
 }
 
 Dog::~Dog()
@@ -22,14 +23,21 @@ Dog::~Dog()
 Dog &Dog::operator=( Dog const &copy )
 {
 	std::cout << "Dog assignment overload called" << std::endl;
-	type = copy.type;
-	dogbrain = new Brain (*copy.dogbrain);
+	if(this != &copy)
+	{
+		if (this->dogbrain)
+			delete this->dogbrain;
+		type = copy.type;
+		dogbrain = new Brain ( *copy.dogbrain );
+	}
 	return ( *this );
 }
+
 void Dog::makeSound() const 
 { 
 	std::cout << "Rooof like a Dog! woofh!" << std::endl;
 }
+
 Brain* Dog::getBrain() const
 {
 	return ( dogbrain );

@@ -16,7 +16,7 @@ int main()
 	}
 	for (int i = 0; i < 2; i++)
 		delete arr[i];
-	
+
 	std::cout << "\nDeep copy test:\n" << std::endl;
 	Dog copy;
 	{
