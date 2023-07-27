@@ -8,12 +8,13 @@ class Bureaucrat
         int grade;
 	public:
 		Bureaucrat();
+        Bureaucrat(std::string name, int grade);
 		Bureaucrat( Bureaucrat const & copy );
 		~Bureaucrat();
 		Bureaucrat& operator=( Bureaucrat const &copy );
         Bureaucrat& operator<<( Bureaucrat const &copy );
-        const std::string getName( void );
-        int getGrade( void );
+        std::string getName( void ) const;
+        int getGrade( void ) const;
         void incrmentGrade( void ); //reverse 
         void decrementGrade( void ); //reverse
 };

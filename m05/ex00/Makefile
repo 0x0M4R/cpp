@@ -1,5 +1,5 @@
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
-NAME = Animal
+SRCS = main.cpp Bureaucrat.cpp
+NAME = Bureaucrat
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 CXX = c++
 OBJS = ${SRCS:.cpp=.o}
