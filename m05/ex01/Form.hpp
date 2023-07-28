@@ -6,11 +6,12 @@ class Form
 {
 	private:
 		const std::string name;
-        bool signed;
+        bool is_signed;
         const int sign_grade;
         const int exec_grade;
 	public:
 		Form();
+        Form( std::string name, int sign_grade, int exec_grade);
 		Form( Form const & copy );
 		~Form();
 		Form& operator=( Form const &copy );

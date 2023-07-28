@@ -2,7 +2,8 @@
 int main()
 {
     Bureaucrat A("omar", 0);
-    A.getGrade();
+    std::cout << A.getGrade() << std::endl;
+    std::cout << A << std::endl;
     std::cout<<A.getName() << std::endl;
     Bureaucrat B;
     B = A;
