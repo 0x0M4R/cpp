@@ -1,7 +1,9 @@
-#ifndef Form_HPP
-#define Form_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 #include "Bureaucrat.hpp"
 #include <iostream>
+
+class Bureaucrat;
 class Form
 {
 	private:
@@ -19,15 +21,18 @@ class Form
         int getSigned( void ) const;
         int getSignGrade( void ) const;
         int getExecGrade( void ) const;
-        void beSigned( Bureaucrat B ); //reverse 
-        // class GradeTooHighException : public std::exception
-		// {
-		// 	virtual const char* what(void) const throw();
-		// };
-		// class GradeTooLowException : public std::exception
-		// {
-		// 	virtual const char* what(void) const throw();
-		// };
+        void beSigned( Bureaucrat &B ); //reverse
+		int checkGrade( int grade ); 
+		void setExec( int grade ); 
+		void setSign( int grade ); 
+        class GradeTooHighException : public std::exception
+		{
+			virtual const char* what(void) const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char* what(void) const throw();
+		};
 };
 std::ostream& operator<<( std::ostream& os, Form const &rhs );
 #endif

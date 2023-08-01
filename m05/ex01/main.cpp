@@ -1,13 +1,16 @@
 #include "Form.hpp"
 int main()
 {
-    Bureaucrat A("omar", 0);
-    std::cout<<A.getName() << std::endl;
-    Bureaucrat B;
-    B = A;
-    std::cout<<B.getName() << std::endl;
-    B.setGrade(151);
-    A.setGrade(0);
     Form a("form",151,0);
-    std::cout << a.getName() << a.getExecGrade() << a.getSignGrade() << a.getSigned() << std::endl;
+    std::cout << a << std::endl;
+    Form b(a);
+    std::cout << b << std::endl;
+    Form c;
+    c = a;
+    std::cout << c << std::endl;
+    Bureaucrat A;
+    std::cout << A << std::endl;
+    c.beSigned(A);
+    std::cout << c << std::endl;
+    A.signForm(c);
 }

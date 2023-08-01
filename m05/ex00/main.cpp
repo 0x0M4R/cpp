@@ -2,12 +2,14 @@
 int main()
 {
     Bureaucrat A("omar", 0);
-    std::cout << A.getGrade() << std::endl;
-    std::cout << A << std::endl;
-    std::cout<<A.getName() << std::endl;
+    std::cout << "A : "<< A << std::endl;
     Bureaucrat B;
     B = A;
-    std::cout<<B.getName() << std::endl;
+    std::cout<<"B : "<< B << std::endl;
     B.setGrade(151);
-    A.setGrade(0);
+    B.decrementGrade();
+    B.incrmentGrade();
+    std::cout<< "B : "<< B << std::endl;
+    Bureaucrat C(B);
+    std::cout<< "C : "<< C << std::endl;
 }
