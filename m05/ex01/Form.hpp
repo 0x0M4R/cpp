@@ -11,6 +11,8 @@ class Form
         bool is_signed;
         const int sign_grade;
         const int exec_grade;
+		void setExec( int grade ); 
+		void setSign( int grade );
 	public:
 		Form();
         Form( std::string name, int sign_grade, int exec_grade);
@@ -22,17 +24,7 @@ class Form
         int getSignGrade( void ) const;
         int getExecGrade( void ) const;
         void beSigned( Bureaucrat &B ); //reverse
-		int checkGrade( int grade ); 
-		void setExec( int grade ); 
-		void setSign( int grade ); 
-        class GradeTooHighException : public std::exception
-		{
-			virtual const char* what(void) const throw();
-		};
-		class GradeTooLowException : public std::exception
-		{
-			virtual const char* what(void) const throw();
-		};
+		int checkGrade( int grade );
 };
 std::ostream& operator<<( std::ostream& os, Form const &rhs );
 #endif
