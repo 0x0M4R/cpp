@@ -85,7 +85,15 @@ int AForm::checkGrade(int grade)
     else
         return grade;
 }
-
+void AForm::checkExecutor(Bureaucrat const &executor) const
+{
+    if (getSigned() == false)
+        std::cout << "Form not signed" << std::endl;
+	// 	throw NotSignedException();
+	if (executor.getGrade() > this->getExecGrade())
+		throw Bureaucrat::GradeTooLowException();
+	std::cout << executor.getName()<< " executed "<< this->getName()<< std::endl;
+}
 std::ostream& operator<<(std::ostream& os, AForm const &rhs)
 {
   return ( os<< "AForm name : "<<rhs.getName() <<", is signed : " <<rhs.getSigned() <<", sign grade : : " <<rhs.getSignGrade() << ", exec grade : " <<rhs.getExecGrade());

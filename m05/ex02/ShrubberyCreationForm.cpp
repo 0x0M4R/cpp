@@ -31,8 +31,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     std::ofstream	f;
 
-    //CHECK GRADE FIRST
-    (void)executor;
+    this->checkExecutor(executor);
 	f.open((this->target + "_shrubbery").c_str());
     f << "                    ,@@@@@@@,"<< std::endl;
     f << "    ,,,.   ,@@@@@@/@@,  .oo8888o."<< std::endl;
