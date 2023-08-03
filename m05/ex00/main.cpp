@@ -7,12 +7,10 @@ int main()
     std::cout<<"B : "<< B << std::endl;
     B = A;
     std::cout<<"B : "<< B << std::endl;
-    B.setGrade(151);
+    B.decrementGrade();
     std::cout<<"B : "<< B << std::endl;
-    // B.decrementGrade();
-    // std::cout<<"B : "<< B << std::endl;
-    // B.incrmentGrade();
-    // std::cout<<"B : "<< B << std::endl;
-    // Bureaucrat C(B);
-    // std::cout<< "C : "<< C << std::endl;
+    B.incrmentGrade();
+    std::cout<<"B : "<< B << std::endl;
+    Bureaucrat C(B);
+    std::cout<< "C : "<< C << std::endl;
 }

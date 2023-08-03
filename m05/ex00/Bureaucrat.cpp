@@ -10,10 +10,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
     this->setGrade(grade);
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & copy)
+Bureaucrat::Bureaucrat(Bureaucrat const & copy):name(copy.name),grade(copy.grade)
 {
 	std::cout << "Bureaucrat copy constructor called !" << std::endl;
-    *this = copy;
+    // *this = copy;
 }
 
 Bureaucrat::~Bureaucrat() 
@@ -24,7 +24,6 @@ Bureaucrat::~Bureaucrat()
 Bureaucrat &Bureaucrat::operator=( Bureaucrat const &copy )
 {
 	std::cout << "Bureaucrat assignment overload called" << std::endl;
-    const_cast<std::string&>(this->name) = copy.name;
     this->grade = copy.grade ;
 	return ( *this );
 }
@@ -44,18 +43,17 @@ void Bureaucrat::setGrade(int grade)
     try
     {
         if( grade < 1)
-            throw GradeTooHighException();
+            throw Bureaucrat::GradeTooHighException();
         if( grade > 150)
-            throw GradeTooLowException();
+            throw Bureaucrat::GradeTooLowException();
     }
-    catch(const GradeTooHighException::exception& e)
+    catch(const Bureaucrat::GradeTooHighException &e)
     {
         std::cerr << e.what() << " grade will be set to 1." <<std::endl;
-        std::cout << "HELLO";
         this->grade = 1;
         return;
     }
-    catch(const GradeTooLowException::exception& e)
+    catch(const Bureaucrat::GradeTooLowException &e)
     {
         std::cerr << e.what() << " grade will be set to 150." << std::endl;
         this->grade = 150;
