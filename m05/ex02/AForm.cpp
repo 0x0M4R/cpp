@@ -56,7 +56,7 @@ void AForm::beSigned(Bureaucrat &B)
     try
     {
         if( B.getGrade() > this->sign_grade)
-            throw AForm::GradeTooLowException();
+            throw Bureaucrat::GradeTooLowException();
         this->is_signed = true;
         // std::cout << this->getName() << " got signed." << std::endl;
     }
@@ -129,7 +129,7 @@ const char*	AForm::GradeTooHighException::what(void) const throw()
 
 const char*	AForm::GradeTooLowException::what(void) const throw()
 {
-	return ("exception : grade is too low...");
+	return ("exception : grade is too low.");
 }
 const char*	AForm::NotSignedException::what(void) const throw()
 {

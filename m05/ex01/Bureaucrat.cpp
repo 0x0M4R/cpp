@@ -48,26 +48,29 @@ void Bureaucrat::setGrade(int grade)
         else if( grade > 150)
             throw Bureaucrat::GradeTooLowException();
     }
-    catch(const std::exception& e)
+    catch(const Bureaucrat::GradeTooHighException::exception& e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cerr << e.what() << " grade will be set to 1." <<std::endl;
+        this->grade = 1;
+        return;
     }
-    if( grade < 1)
-            this->grade = 1;
-    else if( grade > 150)
+    catch(const Bureaucrat::GradeTooLowException::exception& e)
+    {
+        std::cerr << e.what() << " grade will be set to 150." << std::endl;
         this->grade = 150;
-    else
-        this->grade = grade;
+        return;
+    }
+    this->grade = grade;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade is too high.");
+	return ("exception : bureaucrat's grade too high.");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	return ("Grade is too low.");
+	return ("exception : bureaucrat's grade too low.");
 }
 
 void Bureaucrat::incrmentGrade(void)
