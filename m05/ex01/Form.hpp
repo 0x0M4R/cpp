@@ -25,6 +25,16 @@ class Form
         int getExecGrade( void ) const;
         void beSigned( Bureaucrat &B ); //reverse
 		int checkGrade( int grade );
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what( void ) const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what( void ) const throw();
+		};
 };
 std::ostream& operator<<( std::ostream& os, Form const &rhs );
 #endif

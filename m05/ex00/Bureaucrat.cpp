@@ -13,7 +13,6 @@ Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
 Bureaucrat::Bureaucrat(Bureaucrat const & copy):name(copy.name),grade(copy.grade)
 {
 	std::cout << "Bureaucrat copy constructor called !" << std::endl;
-    // *this = copy;
 }
 
 Bureaucrat::~Bureaucrat() 
@@ -24,7 +23,9 @@ Bureaucrat::~Bureaucrat()
 Bureaucrat &Bureaucrat::operator=( Bureaucrat const &copy )
 {
 	std::cout << "Bureaucrat assignment overload called" << std::endl;
-    this->grade = copy.grade ;
+    if( this == &copy)
+        return *this;
+    this->grade = copy.grade;
 	return ( *this );
 }
 

@@ -24,10 +24,9 @@ Form::~Form()
 Form &Form::operator=( Form const &copy )
 {
 	std::cout << "Form assignment overload called" << std::endl;
+    if( this == &copy)
+        return *this;
     this->is_signed = copy.is_signed;
-    const_cast<std::string&>(this->name) = copy.name;
-    const_cast<int&>(this->exec_grade) = copy.exec_grade;
-    const_cast<int&>(this->sign_grade) = copy.sign_grade;
 	return ( *this );
 }
 
@@ -56,12 +55,12 @@ void Form::beSigned(Bureaucrat &B)
     try
     {
         if( B.getGrade() > this->sign_grade)
-            throw Bureaucrat::GradeTooLowException();
+            throw Form::GradeTooLowException();
         this->is_signed = true;
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cerr << e.what() << " can not sign form."<< std::endl;
     }
 }
 
@@ -70,32 +69,34 @@ int Form::checkGrade(int grade)
     try
     {
         if( grade < 1)
-            throw Bureaucrat::GradeTooHighException();
+            throw Form::GradeTooHighException();
         else if( grade > 150)
-            throw Bureaucrat::GradeTooLowException();
+            throw Form::GradeTooLowException();
     }
-    catch(const std::exception& e)
+    catch(const Form::GradeTooLowException& e)
     {
-        std::cerr << e.what() << std::endl;
-    }
-    if( grade < 1)
-        return 1;
-    else if( grade > 150)
+        std::cerr << e.what() << " grade will be set to 150." << std::endl;
         return 150;
-    else
-        return grade;
+    }
+    catch(const Form::GradeTooHighException& e)
+    {
+        std::cerr << e.what() << " grade will be set to 1." << std::endl;
+        return 1;
+    }
+    return grade;
 }
 
 std::ostream& operator<<(std::ostream& os, Form const &rhs)
 {
   return ( os<< "Form name : "<<rhs.getName() <<", is signed : " <<rhs.getSigned() <<", sign grade : : " <<rhs.getSignGrade() << ", exec grade : " <<rhs.getExecGrade());
 }
-// const char*	Form::GradeTooHighException::what(void) const throw()
-// {
-// 	return ("Grade is too high...");
-// }
 
-// const char*	Form::GradeTooLowException::what(void) const throw()
-// {
-// 	return ("Grade is too low...");
-// }
+const char*	Form::GradeTooHighException::what(void) const throw()
+{
+	return ("exception : grade is too high.");
+}
+
+const char*	Form::GradeTooLowException::what(void) const throw()
+{
+	return ("exception : grade is too low.");
+}

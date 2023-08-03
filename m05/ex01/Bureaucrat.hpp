@@ -23,11 +23,13 @@ class Bureaucrat
         void signForm( Form& form ); 
         class GradeTooHighException : public std::exception
 		{
-			virtual const char* what(void) const throw();
+			public:
+				virtual const char* what(void) const throw();
 		};
 		class GradeTooLowException : public std::exception
 		{
-			virtual const char* what(void) const throw();
+			public:
+				virtual const char* what(void) const throw();
 		};
 };
 std::ostream& operator<<( std::ostream& os, Bureaucrat const &rhs );

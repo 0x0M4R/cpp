@@ -10,10 +10,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade):name(name)
     this->setGrade(grade);
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & copy)
+Bureaucrat::Bureaucrat(Bureaucrat const & copy):name(copy.name),grade(copy.grade)
 {
 	std::cout << "Bureaucrat copy constructor called !" << std::endl;
-    *this = copy;
 }
 
 Bureaucrat::~Bureaucrat() 
@@ -24,7 +23,8 @@ Bureaucrat::~Bureaucrat()
 Bureaucrat &Bureaucrat::operator=( Bureaucrat const &copy )
 {
 	std::cout << "Bureaucrat assignment overload called" << std::endl;
-    const_cast<std::string&>(this->name) = copy.name;
+    if( this == &copy)
+        return *this;
     this->grade = copy.grade ;
 	return ( *this );
 }
@@ -45,16 +45,16 @@ void Bureaucrat::setGrade(int grade)
     {
         if( grade < 1)
             throw Bureaucrat::GradeTooHighException();
-        else if( grade > 150)
+        if( grade > 150)
             throw Bureaucrat::GradeTooLowException();
     }
-    catch(const Bureaucrat::GradeTooHighException::exception& e)
+    catch(const Bureaucrat::GradeTooHighException &e)
     {
         std::cerr << e.what() << " grade will be set to 1." <<std::endl;
         this->grade = 1;
         return;
     }
-    catch(const Bureaucrat::GradeTooLowException::exception& e)
+    catch(const Bureaucrat::GradeTooLowException &e)
     {
         std::cerr << e.what() << " grade will be set to 150." << std::endl;
         this->grade = 150;
@@ -87,15 +87,12 @@ void Bureaucrat::decrementGrade(void)
 
 void Bureaucrat::signForm(Form &form)
 {
-    try
-    {
-        form.beSigned(*this);
+
+    form.beSigned(*this);
+    if (form.getSigned() == true)
         std::cout << this->getName() << " signed " << form.getName() << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << this->getName() << " couldnt sign " << form.getName() << e.what()<<std::endl;
-    }
+    else
+        std::cout << this->getName() << " couldnt sign " << form.getName() << " because grade too low."<<std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat const &rhs)

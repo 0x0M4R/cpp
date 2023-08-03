@@ -24,10 +24,9 @@ AForm::~AForm()
 AForm &AForm::operator=( AForm const &copy )
 {
 	std::cout << "AForm assignment overload called" << std::endl;
+    if( this == &copy)
+        return *this;
     this->is_signed = copy.is_signed;
-    const_cast<std::string&>(this->name) = copy.name;
-    const_cast<int&>(this->exec_grade) = copy.exec_grade;
-    const_cast<int&>(this->sign_grade) = copy.sign_grade;
 	return ( *this );
 }
 
@@ -56,9 +55,8 @@ void AForm::beSigned(Bureaucrat &B)
     try
     {
         if( B.getGrade() > this->sign_grade)
-            throw Bureaucrat::GradeTooLowException();
+            throw AForm::GradeTooLowException();
         this->is_signed = true;
-        // std::cout << this->getName() << " got signed." << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -75,20 +73,17 @@ int AForm::checkGrade(int grade)
         else if( grade > 150)
             throw AForm::GradeTooLowException();
     }
-    catch(const AForm::GradeTooLowException::exception& e)
+    catch(const AForm::GradeTooLowException& e)
     {
         std::cerr << e.what() << " grade will be set to 150." << std::endl;
+        return 150;
     }
-    catch(const AForm::GradeTooHighException::exception& e)
+    catch(const AForm::GradeTooHighException& e)
     {
         std::cerr << e.what() << " grade will be set to 1." << std::endl;
-    }
-    if( grade < 1)
         return 1;
-    else if( grade > 150)
-        return 150;
-    else
-        return grade;
+    }
+    return grade;
 }
 
 bool AForm::execute(Bureaucrat const &executor) const
