@@ -27,12 +27,10 @@ std::string ShrubberyCreationForm::getTarget(void) const
 	return ( this->target );
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+void ShrubberyCreationForm::applyExecution( void) const
 {
     std::ofstream	f;
-
-    this->checkExecutor(executor);
-	f.open((this->target + "_shrubbery").c_str());
+    f.open((this->target + "_shrubbery").c_str());
     f << "                    ,@@@@@@@,"<< std::endl;
     f << "    ,,,.   ,@@@@@@/@@,  .oo8888o."<< std::endl;
     f << "    ,&%%&%&&%,@@@@@/@@@@@@,8888/88/8o"<< std::endl;
@@ -43,7 +41,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
     f << "    |o|        | |         | |"<< std::endl;
     f << "    |.|        | |         | |"<< std::endl;
     f << "    /// ._///_/__/  ,/_//__///.  /_//__/_"<< std::endl;
-	f.close();
+    f.close();
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=( ShrubberyCreationForm const &copy )
