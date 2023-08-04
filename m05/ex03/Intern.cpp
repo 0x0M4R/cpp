@@ -9,7 +9,7 @@ Intern::Intern()
 Intern::Intern(Intern const & copy)
 {
 	std::cout << "Intern copy constructor called !" << std::endl;
-    *this=copy;
+	*this=copy;
 }
 
 Intern::~Intern() 
@@ -48,9 +48,9 @@ AForm *Intern::makeForm(std::string form, std::string target)
 	{
 		if (form == forms[i])
 		{
-			std::cout
-				<< "Intern creates "<< form << std::endl;
-			return ((this->*create_form[i])(target));
+			AForm *ret = (this->*create_form[i])(target);
+			std::cout << "Intern created "<< form << " form." <<std::endl;
+			return (ret);
 		}
 	}
 	std::cout << "Form "<< form << " doesnt exist" << std::endl;

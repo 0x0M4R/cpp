@@ -13,7 +13,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyReq
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & copy): AForm(copy)
 {
 	std::cout << "RobotomyRequestForm copy constructor called !" << std::endl;
-    *this=copy;
+	*this=copy;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() 
@@ -28,12 +28,13 @@ std::string RobotomyRequestForm::getTarget(void) const
 
 void RobotomyRequestForm::applyExecution( void ) const
 {
-    std::cout << "DRILLING NOISES." << std::endl;
-        if (std::rand() % 2 == 1)
-            std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
-        else
-            std::cout << this->getTarget() << " robotomy failed." << std::endl;
+	std::cout << "DRILLING NOISES." << std::endl;
+		if (std::rand() % 2 == 1)
+			std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
+		else
+			std::cout << this->getTarget() << " robotomy failed." << std::endl;
 }
+
 RobotomyRequestForm &RobotomyRequestForm::operator=( RobotomyRequestForm const &copy )
 {
 	if (this != &copy)
@@ -43,5 +44,5 @@ RobotomyRequestForm &RobotomyRequestForm::operator=( RobotomyRequestForm const &
 
 std::ostream& operator<<(std::ostream& os, RobotomyRequestForm const &rhs)
 {
-  return ( os<< "RobotomyRequestForm : " << rhs.getTarget());
+	return ( os<< "RobotomyRequestForm : " << rhs.getTarget());
 }

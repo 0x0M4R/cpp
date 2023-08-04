@@ -7,22 +7,22 @@ class Bureaucrat
 {
 	private:
 		const std::string name;
-        int grade;
+		int grade;
 	public:
 		Bureaucrat();
-        Bureaucrat(std::string name, int grade);
+		Bureaucrat(std::string name, int grade);
 		Bureaucrat( Bureaucrat const & copy );
 		~Bureaucrat();
 		Bureaucrat& operator=( Bureaucrat const &copy );
-        Bureaucrat& operator<<( Bureaucrat const &copy );
-        std::string getName( void ) const;
-        int getGrade( void ) const;
-        void setGrade( int grade );
-        void incrmentGrade( void );
-        void decrementGrade( void ); 
-        void signForm( AForm& form );
+		Bureaucrat& operator<<( Bureaucrat const &copy );
+		std::string getName( void ) const;
+		int getGrade( void ) const;
+		void setGrade( int grade );
+		void incrmentGrade( void );
+		void decrementGrade( void ); 
+		void signForm( AForm& form );
 		void executeForm(AForm const & form) const;
-        class GradeTooHighException : public std::exception
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char* what(void) const throw();

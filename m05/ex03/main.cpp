@@ -29,6 +29,6 @@ int main()
 	delete robotomy;
 
 	AForm *random = i.makeForm("nothing", "nowhere");
-    delete random;
+	delete random;
 	return (0);
 }

@@ -14,7 +14,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("Shrubbe
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & copy): AForm(copy)
 {
 	std::cout << "ShrubberyCreationForm copy constructor called !" << std::endl;
-    *this=copy;
+	*this=copy;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() 
@@ -29,19 +29,19 @@ std::string ShrubberyCreationForm::getTarget(void) const
 
 void ShrubberyCreationForm::applyExecution( void) const
 {
-    std::ofstream	f;
-    f.open((this->target + "_shrubbery").c_str());
-    f << "                    ,@@@@@@@,"<< std::endl;
-    f << "    ,,,.   ,@@@@@@/@@,  .oo8888o."<< std::endl;
-    f << "    ,&%%&%&&%,@@@@@/@@@@@@,8888/88/8o"<< std::endl;
-    f << ",%&/%&&%&&%,@@@/@@@/@@@88/88888/88'"<< std::endl;
-    f << "%&&%&%&/%&&%@@/@@/ /@@@88888/88888'"<< std::endl;
-    f << "%&&%/ %&%%&&@@/ V /@@' `88/8 `/88'"<< std::endl;
-    f << "`&%/ ` /%&'    |.|        / '|8'"<< std::endl;
-    f << "    |o|        | |         | |"<< std::endl;
-    f << "    |.|        | |         | |"<< std::endl;
-    f << "    /// ._///_/__/  ,/_//__///.  /_//__/_"<< std::endl;
-    f.close();
+	std::ofstream	f;
+	f.open((this->target + "_shrubbery").c_str());
+	f << "                    ,@@@@@@@,"<< std::endl;
+	f << "    ,,,.   ,@@@@@@/@@,  .oo8888o."<< std::endl;
+	f << "    ,&%%&%&&%,@@@@@/@@@@@@,8888/88/8o"<< std::endl;
+	f << ",%&/%&&%&&%,@@@/@@@/@@@88/88888/88'"<< std::endl;
+	f << "%&&%&%&/%&&%@@/@@/ /@@@88888/88888'"<< std::endl;
+	f << "%&&%/ %&%%&&@@/ V /@@' `88/8 `/88'"<< std::endl;
+	f << "`&%/ ` /%&'    |.|        / '|8'"<< std::endl;
+	f << "    |o|        | |         | |"<< std::endl;
+	f << "    |.|        | |         | |"<< std::endl;
+	f << "    /// ._///_/__/  ,/_//__///.  /_//__/_"<< std::endl;
+	f.close();
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=( ShrubberyCreationForm const &copy )
@@ -53,5 +53,5 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=( ShrubberyCreationForm c
 
 std::ostream& operator<<(std::ostream& os, ShrubberyCreationForm const &rhs)
 {
-  return ( os<< "ShrubberyCreationForm : " << rhs.getTarget());
+	return ( os<< "ShrubberyCreationForm : " << rhs.getTarget());
 }

@@ -13,7 +13,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("Presi
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & copy): AForm(copy)
 {
 	std::cout << "PresidentialPardonForm copy constructor called !" << std::endl;
-    *this=copy;
+	*this=copy;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() 
@@ -28,8 +28,9 @@ std::string PresidentialPardonForm::getTarget(void) const
 
 void PresidentialPardonForm::applyExecution( void ) const
 {
-    std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
+
 PresidentialPardonForm &PresidentialPardonForm::operator=( PresidentialPardonForm const &copy )
 {
 	if (this != &copy)
@@ -39,5 +40,5 @@ PresidentialPardonForm &PresidentialPardonForm::operator=( PresidentialPardonFor
 
 std::ostream& operator<<(std::ostream& os, PresidentialPardonForm const &rhs)
 {
-  return ( os<< "PresidentialPardonForm : " << rhs.getTarget());
+	return ( os<< "PresidentialPardonForm : " << rhs.getTarget());
 }

@@ -9,26 +9,26 @@ class AForm
 {
 	private:
 		const std::string name;
-        bool is_signed;
-        const int sign_grade;
-        const int exec_grade;
+		bool is_signed;
+		const int sign_grade;
+		const int exec_grade;
 		void setExec( int grade );
 		void setSign( int grade );
 	public:
 		AForm();
-        AForm( std::string name, int sign_grade, int exec_grade);
+		AForm( std::string name, int sign_grade, int exec_grade);
 		AForm( AForm const &copy );
 		virtual ~AForm();
 		AForm& operator=( AForm const &copy );
-        std::string getName( void ) const;
-        bool getSigned( void ) const;
-        int getSignGrade( void ) const;
-        int getExecGrade( void ) const;
-        void beSigned( Bureaucrat &B);
+		std::string getName( void ) const;
+		bool getSigned( void ) const;
+		int getSignGrade( void ) const;
+		int getExecGrade( void ) const;
+		void beSigned( Bureaucrat &B);
 		int checkGrade( int grade );
 		bool execute( Bureaucrat const &executor) const;
 		virtual void applyExecution( void ) const = 0;
-        class GradeTooHighException : public std::exception
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char* what( void ) const throw();

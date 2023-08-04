@@ -8,22 +8,22 @@ class Form
 {
 	private:
 		const std::string name;
-        bool is_signed;
-        const int sign_grade;
-        const int exec_grade;
+		bool is_signed;
+		const int sign_grade;
+		const int exec_grade;
 		void setExec( int grade ); 
 		void setSign( int grade );
 	public:
 		Form();
-        Form( std::string name, int sign_grade, int exec_grade);
+		Form( std::string name, int sign_grade, int exec_grade);
 		Form( Form const & copy );
 		~Form();
 		Form& operator=( Form const &copy );
-        std::string getName( void ) const;
-        int getSigned( void ) const;
-        int getSignGrade( void ) const;
-        int getExecGrade( void ) const;
-        void beSigned( Bureaucrat &B ); //reverse
+		std::string getName( void ) const;
+		int getSigned( void ) const;
+		int getSignGrade( void ) const;
+		int getExecGrade( void ) const;
+		void beSigned( Bureaucrat &B ); //reverse
 		int checkGrade( int grade );
 		class GradeTooHighException : public std::exception
 		{
