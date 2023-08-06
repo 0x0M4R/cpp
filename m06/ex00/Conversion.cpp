@@ -37,25 +37,25 @@ void Conversion::display( void )
     (std::isfinite(d) && d <= INT_MAX && d >= INT_MIN)?
         std::cout << "int : " << i << std::endl:
         std::cout << "int : impossible" << std::endl;
-    (std::isfinite(f))?
-        (i == static_cast<int>(f))?
+    (std::isfinite(f) && d == static_cast<int>(d))?
+        // (d == static_cast<int>(d))?
             std::cout << "float : " << f << ".0f" << std::endl:
-            std::cout << "float : " << f << std::endl:
+            // std::cout << "float : " << f << "f" << std::endl:
         std::cout << "float : " << f << "f" << std::endl;
-    (i == static_cast<int>(d) && std::isfinite(d))?
+    (d == static_cast<int>(d) && std::isfinite(d))?
         std::cout << "double : " << d << ".0" << std::endl:
         std::cout << "double : " << d << std::endl;
 }
 void Conversion::convert( void )
 {
     std::string in_f = "";
-    if(input.find_last_of('f') != std::string::npos && input.length() > 1)
+    if(input.at(input.length() - 1) == 'f')
             in_f = input.substr(0,input.length() - 1);
     std::istringstream o(input);
     int temp_i;
     float temp_f;
     double temp_d;
-    if(o >> temp_d && o.eof() && !o.fail() && input.find('.') != std::string::npos)
+    if(o >> temp_d && o.eof() && !o.fail())
     {
         d = temp_d;
         type = 'd';
