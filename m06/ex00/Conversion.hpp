@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <limits.h>
+#include <cmath>
 class Conversion
 {
 	private:
@@ -19,7 +20,7 @@ class Conversion
 		~Conversion();
 		Conversion& operator=( Conversion const &copy );
 		void convert( void ) ;
-        void convertAll( void ) ;
+        void display( void ) ;
 };
 std::ostream& operator<<( std::ostream& os, Conversion const &rhs );
 #endif

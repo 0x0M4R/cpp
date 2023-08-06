@@ -8,19 +8,7 @@ Conversion::Conversion()
 Conversion::Conversion( std::string input) : input(input)
 {
     convert();
-    std::cout << "type : " << type << std::endl;
-    ( i >= CHAR_MIN && i <= CHAR_MAX )?
-        (std::isprint(i))?
-            std::cout << "char : " << static_cast<int>(i) << std::endl:
-            std::cout << "char : Non displayable" << std::endl:
-        std::cout << "char : impossible" << std::endl;
-    std::cout << "int : " << i << std::endl;
-    (i == static_cast<int>(f))? 
-        std::cout << "float : " << f << ".0f" << std::endl:
-        std::cout << "float : " << f << std::endl;
-    (i == static_cast<int>(d))?
-        std::cout << "double : " << d << ".0" << std::endl:
-        std::cout << "double : " << d << std::endl;
+    display();
 }
 
 Conversion::~Conversion()
@@ -38,21 +26,36 @@ Conversion::~Conversion()
 
 // }
 
-void Conversion::convertAll( void )
+void Conversion::display( void )
 {
 
+    (i >= CHAR_MIN && i <= CHAR_MAX)?
+        (std::isprint(i))?
+            std::cout << "char : '" << static_cast<char>(i) << "'" << std::endl:
+            std::cout << "char : Non displayable" << std::endl:
+        std::cout << "char : impossible" << std::endl;
+    (std::isfinite(d) && d <= INT_MAX && d >= INT_MIN)?
+        std::cout << "int : " << i << std::endl:
+        std::cout << "int : impossible" << std::endl;
+    (std::isfinite(f))?
+        (i == static_cast<int>(f))?
+            std::cout << "float : " << f << ".0f" << std::endl:
+            std::cout << "float : " << f << std::endl:
+        std::cout << "float : " << f << "f" << std::endl;
+    (i == static_cast<int>(d) && std::isfinite(d))?
+        std::cout << "double : " << d << ".0" << std::endl:
+        std::cout << "double : " << d << std::endl;
 }
 void Conversion::convert( void )
 {
-    std::string in_f;
+    std::string in_f = "";
     if(input.find_last_of('f') != std::string::npos && input.length() > 1)
             in_f = input.substr(0,input.length() - 1);
     std::istringstream o(input);
     int temp_i;
     float temp_f;
     double temp_d;
-    // char temp_c;
-    if(o >> temp_d && o.eof() && !o.fail())
+    if(o >> temp_d && o.eof() && !o.fail() && input.find('.') != std::string::npos)
     {
         d = temp_d;
         type = 'd';
@@ -80,5 +83,6 @@ void Conversion::convert( void )
         i = static_cast<int>(f);
         return;
     }
-    std::cout << "invalid input"<<std::endl; //throw exception
+    throw "invalid input";
+    // std::cout << "invalid input"<<std::endl; //throw exception
 }
