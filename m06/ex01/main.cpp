@@ -1,17 +1,20 @@
 #include "Serializer.hpp"
+
 int main()
 {
-    Serializer s(1,3,4);
-    std::cout << s << std::endl;
-	// try
-	// {
-	// 	if (ac == 2)
-	// 		Conversion a(av[1]);
-	// }
-	// catch(...)
-	// {
-	// 	std::cout << "invalid input"<<std::endl;
-	// }
+    Data d = {
+        429.23,
+        -3,
+        false
+    };
+    
+    Serializer s;
+    std::cout << d << std::endl;
+    uintptr_t byte = s.serialize(&d);
+    std::cout << "serialized to byte array : "<< byte << std::endl;
+    Data *ptr = s.deserialize(byte);
+    if (ptr == &d)
+        std::cout << "deserialization returns same object!" << std::endl;
+    std::cout << *ptr << std::endl;
 	return(0);
 }
-//  double a =12.;

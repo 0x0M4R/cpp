@@ -5,12 +5,12 @@ Serializer::Serializer()
 
 }
 
-Serializer::Serializer(int data1, int data2, int data3)
-{
-    data->data1 = data1;
-    data->data2 = data2;
-    data->data3 = data3;
-}
+// Serializer::Serializer(int data1, int data2, int data3)
+// {
+//     data->data1 = data1;
+//     data->data2 = data2;
+//     data->data3 = data3;
+// }
 
 Serializer::~Serializer()
 {
@@ -26,29 +26,16 @@ Serializer::~Serializer()
 
 // }
 
-int Serializer::getData( int index )
-{
-    if (index == 1)
-        return data->data1;
-    else if (index == 2)
-        return data->data2;
-    else if ( index == 3)
-        return data->data3;
-    return 0;
-}
-
 uintptr_t Serializer::serialize( Data* ptr )
 {
-    (void)ptr;
-    return 0;
+    return( reinterpret_cast<uintptr_t>(ptr));
 }
 Data* Serializer::deserialize( uintptr_t raw )
 {
-    (void)raw;
-    return NULL;
+    return( reinterpret_cast<Data *>(raw));
 }
 
-std::ostream& operator<<(std::ostream& os, Serializer &rhs) 
+std::ostream& operator<<(std::ostream& os, Data &rhs) 
 {
-	return ( os<< "data1: " <<rhs.getData(1));
+	return ( os<< "data1= " <<rhs.data1 << ", data2= "<<rhs.data2 <<", data= " <<rhs.data3 << ", address= " << &rhs);
 }
