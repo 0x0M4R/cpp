@@ -2,6 +2,7 @@
 #define SERIALIZER_HPP
 #include <iostream>
 
+struct Data;
 class Serializer
 {
 	private:
@@ -12,16 +13,16 @@ class Serializer
 		Serializer( Serializer const & copy );
 		~Serializer();
 		Serializer& operator=( Serializer const &copy );
-        int getData( Data* ptr ) ;
+        int getData( int index ) ;
 		uintptr_t serialize( Data* ptr ) ;
         Data* deserialize( uintptr_t raw ) ;
 };
 
-typedef struct Data
+struct Data
 {
     int data1;
     int data2;
     int data3;
 };
-std::ostream& operator<<( std::ostream& os, Serializer const &rhs );
+std::ostream& operator<<( std::ostream& os, Serializer &rhs );
 #endif

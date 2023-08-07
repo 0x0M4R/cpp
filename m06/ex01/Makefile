@@ -1,5 +1,5 @@
-SRCS = main.cpp Conversion.cpp 
-NAME = convert
+SRCS = main.cpp Serializer.cpp
+NAME = Serializer
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
 CXX = c++
 OBJS = ${SRCS:.cpp=.o}
