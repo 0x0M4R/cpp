@@ -16,15 +16,6 @@ Conversion::~Conversion()
 
 }
 
-// Conversion::Conversion( Conversion const & copy )
-// {
-
-// }
-
-// Conversion &Conversion::operator=( Conversion const &copy )
-// {
-
-// }
 
 void Conversion::display( void )
 {

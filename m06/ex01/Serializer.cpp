@@ -5,26 +5,10 @@ Serializer::Serializer()
 
 }
 
-// Serializer::Serializer(int data1, int data2, int data3)
-// {
-//     data->data1 = data1;
-//     data->data2 = data2;
-//     data->data3 = data3;
-// }
-
 Serializer::~Serializer()
 {
 
 }
-// Serializer::Serializer( Serializer const & copy )
-// {
-
-// }
-
-// Serializer &Serializer::operator=( Serializer const &copy )
-// {
-
-// }
 
 uintptr_t Serializer::serialize( Data* ptr )
 {
