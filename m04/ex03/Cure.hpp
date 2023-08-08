@@ -3,10 +3,9 @@
 #include "AMateria.hpp"
 class Cure : public AMateria
 {
-	private:
-		const std::string type;
 	public:
 		Cure();
+        Cure(std::string const & type);
 		Cure( Cure const & copy );
 		~Cure();
         Cure& operator=( Cure const &copy );

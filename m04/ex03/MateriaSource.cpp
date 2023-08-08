@@ -6,6 +6,7 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(MateriaSource const & copy)
 {
+    (void)copy;
 	std::cout << "MateriaSource copy constructor called !" << std::endl;
 }
 
@@ -16,6 +17,7 @@ MateriaSource::~MateriaSource()
 
 MateriaSource &MateriaSource::operator=( MateriaSource const &copy )
 {
+    (void)copy;
 	std::cout << "MateriaSource assignment overload called" << std::endl;
 	return ( *this );
 }

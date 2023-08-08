@@ -1,11 +1,16 @@
 #include "Cure.hpp"
-Cure::Cure(): type("cure")
+Cure::Cure(): AMateria("cure")
 {
 	std::cout << "Cure default constructor called !" << std::endl;
 }
-//While assigning a Materia to another, copying the type doesn’t make sense.
-Cure::Cure(Cure const & copy)
+Cure::Cure(std::string const & type) : AMateria(type)
 {
+	std::cout << "Cure copy constructor called !" << std::endl;
+}
+//While assigning a Materia to another, copying the type doesn’t make sense.
+Cure::Cure(Cure const & copy) : AMateria("cure")
+{
+    (void)copy;
 	std::cout << "Cure copy constructor called !" << std::endl;
 }
 
@@ -16,8 +21,9 @@ Cure::~Cure()
 
 Cure &Cure::operator=( Cure const &copy )
 {
-	std::cout << "Cure assignment overload called" << std::endl;
-	return ( *this );
+    (void)copy;
+    std::cout << "Cure assignment overload called" << std::endl;
+	return (*this);
 }
 std::string const & Cure::getType() const
 {

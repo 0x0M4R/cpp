@@ -1,11 +1,12 @@
 #include "Ice.hpp"
-Ice::Ice(): type("ice")
+Ice::Ice() : AMateria("ice")
 {
 	std::cout << "Ice default constructor called !" << std::endl;
 }
 //While assigning a Materia to another, copying the type doesn’t make sense.
-Ice::Ice(Ice const & copy)
+Ice::Ice(Ice const & copy) : AMateria("ice")
 {
+    (void)copy;
 	std::cout << "Ice copy constructor called !" << std::endl;
 }
 
@@ -16,6 +17,7 @@ Ice::~Ice()
 
 Ice &Ice::operator=( Ice const &copy )
 {
+    (void)copy;
 	std::cout << "Ice assignment overload called" << std::endl;
 	return ( *this );
 }

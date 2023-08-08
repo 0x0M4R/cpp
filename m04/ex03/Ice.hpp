@@ -3,10 +3,9 @@
 #include "AMateria.hpp"
 class Ice : public AMateria
 {
-	private:
-		const std::string type;
 	public:
 		Ice();
+        Ice(std::string const & type);
 		Ice( Ice const & copy );
 		~Ice();
         Ice& operator=( Ice const &copy );

@@ -12,6 +12,7 @@ Character::Character(const std::string name):name(name)
 //any copy(using copy constructor or copy assignment operator) of a Character must be deep.
 Character::Character(Character const & copy)
 {
+    (void)copy;
 	std::cout << "Character copy constructor called !" << std::endl;
 }
 
@@ -22,6 +23,7 @@ Character::~Character()
 
 Character &Character::operator=( Character const &copy )
 {
+    (void)copy;
 	std::cout << "Character assignment overload called" << std::endl;
 	return ( *this );
 }
