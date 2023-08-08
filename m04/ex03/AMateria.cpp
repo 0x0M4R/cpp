@@ -1,27 +1,27 @@
-#include "AMateria.cpp"
-AMateria::AMateria()
-{
+// #include "AMateria.hpp"
+// AMateria::AMateria()
+// {
     
-}
-AMateria::AMateria(std::string const & type)
-{
+// }
+// AMateria::AMateria(std::string const & type)
+// {
     
-}
+// }
 
-AMateria~AMateria()
-{
+// AMateria::~AMateria()
+// {
     
-}
-AMateria::AMateria(Animal const & copy)
-{
+// }
+// AMateria::AMateria(AMateria const & copy)
+// {
     
-}
-AMateria &AMateria::operator=( Animal const &copy )
-{
-    
-}
+// }
+// AMateria &AMateria::operator=( AMateria const &copy )
+// {
+//     return *this;
+// }
 
-std::string const & AMateria::getType() const
-{
-    
-}
+// std::string const & AMateria::getType() const
+// {
+//     return (type);
+// }

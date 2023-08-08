@@ -1,4 +1,10 @@
 #include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "MateriaSource.hpp"
+#include "IMateriaSource.hpp"
+#include "Character.hpp"
+#include "ICharacter.hpp"
 int main()
 {
     IMateriaSource* src = new MateriaSource();
