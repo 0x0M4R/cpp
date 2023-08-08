@@ -1,5 +1,5 @@
 #include "AMateria.hpp"
-AMateria::AMateria()
+AMateria::AMateria() : type("default") //abstract never going to construct
 {
     std::cout << "Ice default constructor called !" << std::endl;
 }
@@ -12,9 +12,8 @@ AMateria::~AMateria()
 {
     std::cout << "AMateria deconstructor called !" << std::endl;
 }
-AMateria::AMateria(AMateria const & copy)
+AMateria::AMateria(AMateria const & copy) : type(copy.type)
 {
-    (void)copy;
     std::cout << "AMateria copy constructor called !" << std::endl;
 }
 AMateria &AMateria::operator=( AMateria const &copy )
@@ -27,7 +26,7 @@ void AMateria::use(ICharacter& target)
 {
 	(void)target;
 }
-// std::string const & AMateria::getType() const
-// {
-//     return (type);
-// }
+std::string const & AMateria::getType() const
+{
+    return (type);
+}

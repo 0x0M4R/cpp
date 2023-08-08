@@ -5,10 +5,11 @@ Cure::Cure(): AMateria("cure")
 }
 Cure::Cure(std::string const & type) : AMateria(type)
 {
+    (void)type;
 	std::cout << "Cure copy constructor called !" << std::endl;
 }
 //While assigning a Materia to another, copying the type doesn’t make sense.
-Cure::Cure(Cure const & copy) : AMateria("cure")
+Cure::Cure(Cure const & copy) : AMateria(copy.type)
 {
     (void)copy;
 	std::cout << "Cure copy constructor called !" << std::endl;

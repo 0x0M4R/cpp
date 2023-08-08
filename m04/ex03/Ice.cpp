@@ -4,7 +4,7 @@ Ice::Ice() : AMateria("ice")
 	std::cout << "Ice default constructor called !" << std::endl;
 }
 //While assigning a Materia to another, copying the type doesn’t make sense.
-Ice::Ice(Ice const & copy) : AMateria("ice")
+Ice::Ice(Ice const & copy) : AMateria(copy.type)
 {
     (void)copy;
 	std::cout << "Ice copy constructor called !" << std::endl;
