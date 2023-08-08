@@ -3,7 +3,6 @@ MateriaSource::MateriaSource()
 {
     for(int i = 0; i < 4 ;i++)
         inventory[i] = NULL;
-	std::cout << "MateriaSource default constructor called !" << std::endl;
 }
 
 MateriaSource::MateriaSource(MateriaSource const & copy)
@@ -15,7 +14,6 @@ MateriaSource::MateriaSource(MateriaSource const & copy)
         else
             inventory[i] = NULL;
     }
-	std::cout << "MateriaSource copy constructor called !" << std::endl;
 }
 
 MateriaSource::~MateriaSource() 
@@ -25,7 +23,6 @@ MateriaSource::~MateriaSource()
         if(inventory[i])
         delete inventory[i];
     }
-	std::cout << "MateriaSource deconstructor called !" << std::endl;
 }
 
 MateriaSource &MateriaSource::operator=( MateriaSource const &copy )
@@ -42,7 +39,6 @@ MateriaSource &MateriaSource::operator=( MateriaSource const &copy )
                 inventory[i] = NULL;
         }
     }
-	std::cout << "MateriaSource assignment overload called" << std::endl;
 	return ( *this );
 }
 void MateriaSource::learnMateria(AMateria* m)

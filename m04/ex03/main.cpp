@@ -2,43 +2,32 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "MateriaSource.hpp"
-// #include "IMateriaSource.hpp"
 #include "Character.hpp"
-// #include "ICharacter.hpp"
 int main()
 {
-    IMateriaSource* src;
-    IMateriaSource* src1 = new MateriaSource();
-    src = src1;
-    // MateriaSource new1;
-    // MateriaSource new2;
-    // new1 = new2;
-    // src->learnMateria(new Ice());
-    // // src->learnMateria(new Cure());
-    // ICharacter* me = new Character("me");
-    // std::cout << "\nDeep copy test copy constructor:\n" << std::endl;
-	// Character bob("bob");
-    // AMateria* tmp;
-    // tmp = src->createMateria("ice");
-    // bob.equip(tmp);
-	// {
-	// 	Character cpy;
-    //     cpy = bob;
-	// 	std::cout << "\nbefore deletion: " << tmp->getType() << std::endl;
-	// }
-	// std::cout << "\ncopied after deletion: " << tmp->getType() << std::endl;
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
 
-    // AMateria* tmp;
-    // tmp = src->createMateria("ice");
-    // tmp->use(me);
-    // me->equip(tmp);
-    // tmp = src->createMateria("cure");
-    // me->equip(tmp);
-    // ICharacter* bob = new Character("bob");
-    // me->use(0, *bob);
-    // me->use(1, *bob);
-    // delete bob;
-    // delete me;
-    // delete src;
-    // return 0;
+    AMateria* tmp;
+
+    ICharacter* me = new Character("me");
+    ICharacter* omar = new Character("omar");
+
+    me->equip(src->createMateria("ice"));
+    me->equip(src->createMateria("cure"));
+    me->use(0,*omar);
+    me->use(1,*omar);
+    
+    omar->equip(src->createMateria("ice"));
+    tmp = src->createMateria("ice");
+    omar->use(0, *me);
+    omar->use(1, *me);
+    omar->unequip(1);
+    omar->use(1,*me);
+    delete tmp;
+    delete me;
+    delete omar;
+    delete src;
+    return 0;
 }

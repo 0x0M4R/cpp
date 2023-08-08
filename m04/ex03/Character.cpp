@@ -1,7 +1,6 @@
 #include "Character.hpp"
 Character::Character(): name("default")
 {
-	std::cout << "Character default constructor called !" << std::endl;
     for(int i = 0; i < 4 ;i++)
         inventory[i] = NULL;
 }
@@ -10,7 +9,7 @@ Character::Character(const std::string name):name(name)
 {
     for(int i = 0; i < 4 ;i++)
         inventory[i] = NULL;
-	std::cout << "Character name constructor called !" << std::endl;
+    // std::cout << "Character name constructor called !" << std::endl;
 }
 //any copy(using copy constructor or copy assignment operator) of a Character must be deep.
 Character::Character(Character const & copy) : name(copy.name)
@@ -24,7 +23,6 @@ Character::Character(Character const & copy) : name(copy.name)
         else
             inventory[i] = NULL;
     }
-	std::cout << "Character deep copy constructor called !" << std::endl;
 }
 
 Character::~Character() 
@@ -34,12 +32,10 @@ Character::~Character()
         if(inventory[i])
             delete inventory[i];
     }
-	std::cout << "Character deconstructor called !" << std::endl;
 }
 
 Character &Character::operator=( Character const &copy )
 {
-    std::cout << "Character assignment overload called" << std::endl;
     if ( this != &copy )
     {
         this->~Character();
