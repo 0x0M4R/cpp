@@ -8,7 +8,7 @@ class Character : public ICharacter
         AMateria *inventory[4];
 	public:
 		Character();
-		Character( const std::string name );
+		Character( const std::string &name );
         Character( Character const & copy );
 		~Character();
         Character& operator=( Character const &copy );

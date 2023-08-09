@@ -6,7 +6,7 @@ Cure::Cure(std::string const & type) : AMateria(type)
 {
     (void)type;
 }
-//While assigning a Materia to another, copying the type doesn’t make sense.
+
 Cure::Cure(Cure const & copy) : AMateria(copy.type)
 {
     (void)copy;

@@ -43,12 +43,15 @@ MateriaSource &MateriaSource::operator=( MateriaSource const &copy )
 }
 void MateriaSource::learnMateria(AMateria* m)
 {
-    for(int i=0;i < 4;i++)
+    if (m)
     {
-        if(!inventory[i])
+        for(int i=0;i < 4;i++)
         {
-            inventory[i] = m;
-            break ;
+            if(!inventory[i])
+            {
+                inventory[i] = m;
+                break ;
+            }
         }
     }
 }

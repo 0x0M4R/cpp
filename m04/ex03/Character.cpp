@@ -5,13 +5,12 @@ Character::Character(): name("default")
         inventory[i] = NULL;
 }
 
-Character::Character(const std::string name):name(name)
+Character::Character(const std::string &name):name(name)
 {
     for(int i = 0; i < 4 ;i++)
         inventory[i] = NULL;
-    // std::cout << "Character name constructor called !" << std::endl;
 }
-//any copy(using copy constructor or copy assignment operator) of a Character must be deep.
+
 Character::Character(Character const & copy) : name(copy.name)
 {
     for(int i = 0; i < 4 ;i++)
@@ -38,9 +37,10 @@ Character &Character::operator=( Character const &copy )
 {
     if ( this != &copy )
     {
-        this->~Character();
         for(int i = 0; i < 4 ;i++)
         {
+            if(inventory[i])
+                delete inventory[i];
             if(copy.inventory[i])
                 inventory[i] = copy.inventory[i]->clone();
             else
