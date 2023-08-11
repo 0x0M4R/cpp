@@ -1,3 +1,5 @@
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 #include <iostream>
 
 template < typename T >
@@ -48,3 +50,4 @@ std::ostream& operator<<( std::ostream& out, const Array<T>& arr ) {
         out << arr[i] << " ";
     return out;
 }
+#endif

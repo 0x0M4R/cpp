@@ -1,5 +1,5 @@
 SRCS = main.cpp
-NAME = Array
+NAME = easyfind
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
 CXX = c++
 OBJS = ${SRCS:.cpp=.o}
