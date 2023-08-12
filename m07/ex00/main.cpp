@@ -26,5 +26,11 @@ int main(void)
     std::cout << a << " " << b << std::endl;
     std::cout << max(a, b) << std::endl;
     std::cout << min(a, b) << std::endl;
+
+    std::string i = "hello", j= "hi";
+    swap(i, j);
+    std::cout << i << " " << j << std::endl;
+    std::cout << max(i, j) << std::endl;
+    std::cout << min(i, j) << std::endl;
     return (0);
 }
