@@ -1,34 +1,30 @@
 #include "whatever.hpp"
-// template <class T>
-// class Data 
-// {
-//     private :
-//         int d;
-//     public:
-//         Data(void): d(0) {}
-//         Data(int d): d(d) {}
-//         Data &operater=( Data &c) {
-//             d=c.d;
-//             return (*this);
-//         }
-//         bool operator<=(Data const &c) const {
-//             return (d<=c.d);
-//         }
-//         bool operator>=(Data const &c) const {
-//             return (d>=c.d);
-//         }
-//         int getd() const { return n;}
-// };
-// std::ostream &operator<<( std::ostream & os, Data &c)
-// {
-//     return (os << c.getd());
-// }
-int main()
+class Awesome
 {
-    int i = 2;
-    int j = 1;
-    swap(i,j);
-    std::cout << "i : " << i << " , j : " << j << std::endl;
-    std::cout << "max : " << max(i,j) << std::endl;
-    std::cout << "min : " << min(i,j) << std::endl;
+    public:
+        Awesome(void) : _n(0) {}
+        Awesome( int n ) : _n( n ) {}
+        Awesome & operator= (Awesome & a) { _n = a._n; return *this; }
+        bool operator==( Awesome const & rhs ) const { return (this->_n == rhs._n); }
+        bool operator!=( Awesome const & rhs ) const{ return (this->_n != rhs._n); }
+        bool operator>( Awesome const & rhs ) const { return (this->_n > rhs._n); }
+        bool operator<( Awesome const & rhs ) const { return (this->_n < rhs._n); }
+        bool operator>=( Awesome const & rhs ) const { return (this->_n >= rhs._n); }
+        bool operator<=( Awesome const & rhs ) const { return (this->_n <= rhs._n); }
+        int get_n() const { return _n; }
+    private:
+        int _n;
+};
+
+std::ostream & operator<<(std::ostream & o, const Awesome &a) { o << a.get_n(); return o; }
+
+int main(void)
+{
+	Awesome a(2), b(4);
+
+    swap(a, b);
+    std::cout << a << " " << b << std::endl;
+    std::cout << max(a, b) << std::endl;
+    std::cout << min(a, b) << std::endl;
+    return (0);
 }
