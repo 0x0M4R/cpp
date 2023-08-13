@@ -12,7 +12,6 @@ void swap(T &arg1, T &arg2)
 template <typename T>
 T min(T &arg1, T &arg2)
 {
-    (void)arg1;
     if (arg2 <= arg1)
         return arg2;
     return arg1;
@@ -20,8 +19,7 @@ T min(T &arg1, T &arg2)
 template <typename T>
 T max(T &arg1, T &arg2)
 {
-    (void)arg1;
-    if (arg2 >= arg2)
+    if (arg2 >= arg1)
         return arg2;
     return arg1;
 }
