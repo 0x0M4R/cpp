@@ -1,5 +1,5 @@
-#ifndef SPAN_HPP
-#define SPAN_HPP
+#ifndef MUTANTSTACK_HPP
+#define MUTANTSTACK_HPP
 #include <iostream>
 #include <algorithm>
 #include <list>
