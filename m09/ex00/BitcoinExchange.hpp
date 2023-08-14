@@ -17,6 +17,7 @@ class BitcoinExchange
 {
     private:
         std::map <int,std::pair<int,float> > price;
+        int price_flag;
     public:
         BitcoinExchange();
         ~BitcoinExchange();

@@ -2,13 +2,21 @@
 
 BitcoinExchange::BitcoinExchange()
 {
+    price_flag = 0;
     price = parse_csv("./data.csv", ',');
+    price_flag = 1;
     std::map <int,std::pair<int,float> > wallet = parse_csv("./input.txt", '|');
-    for(std::map <int,std::pair<int,float> >::const_iterator it = wallet.begin();
-    it != wallet.end(); ++it)
+    for(size_t i = 0;i<wallet.size();i++)
     {
-        std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n";
+
+        std::cout << price.lower_bound(wallet[i].first)->second.second * wallet[i].second<<std::endl;
+        // if (wallet[i].first
+        // std::cout << i << " " << wallet[i].first << " " << wallet[i].second << "\n";
     }
+    // for(std::map<int, std::pair<int,float> >::const_iterator it = price.begin();
+    //     it != price.end(); ++it)
+    //         std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n";
+
 }
 BitcoinExchange::~BitcoinExchange()
 {
@@ -84,7 +92,6 @@ std::map <int,std::pair<int,float> > BitcoinExchange::parse_csv(const char *file
 	std::getline(csv, line); //skip header
 	std::cout << line << std::endl;
 	int i = 0;
-	std::getline(csv, line);
 	while(std::getline(csv, line))
 	{
 		size_t pos = line.find(delimeter);
@@ -108,7 +115,10 @@ std::map <int,std::pair<int,float> > BitcoinExchange::parse_csv(const char *file
         // (void)date;
         // (void)value;
         // temp.insert(i,std::make_pair(date,value));
-		temp[i] = std::make_pair(date,value);
+        if (price_flag)
+            temp[i] = std::make_pair(date,value);
+        else
+            temp[date] = std::make_pair(0,value);
         // std::cout << date << " "<< temp[date] << std::endl;
 		i++;
     }
