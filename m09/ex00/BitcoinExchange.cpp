@@ -7,7 +7,7 @@ BitcoinExchange::BitcoinExchange()
     for(std::map <int,std::pair<int,float> >::const_iterator it = wallet.begin();
     it != wallet.end(); ++it)
     {
-        std::cout << it->first << " " << it->second.first << " " << it->second.first << "\n";
+        std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n";
     }
 }
 BitcoinExchange::~BitcoinExchange()
