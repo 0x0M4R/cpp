@@ -4,7 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-
+#include <algorithm>
 struct Date
 {
     int year;
@@ -23,5 +23,8 @@ class BitcoinExchange
         BitcoinExchange(BitcoinExchange const &copy);
         std::map <Date,float> parse_csv (const char *file, char delimiter);
         Date parse_date(std::string date);
+        float parse_value(std::string value);
+        std::string trim_ws(std::string s);
 };
+std::ostream& operator<<( std::ostream&, const Date& );
 #endif
