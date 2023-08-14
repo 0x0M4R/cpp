@@ -5,7 +5,7 @@
 #include <sstream>
 #include <map>
 
-struct Time
+struct Date
 {
     int year;
     int month;
@@ -15,14 +15,13 @@ struct Time
 class BitcoinExchange
 {
     private:
-        std::map <std::string, float> price;
+        std::map <Date, float> price;
     public:
         BitcoinExchange();
         ~BitcoinExchange();
         BitcoinExchange& operator=(BitcoinExchange const &copy);
         BitcoinExchange(BitcoinExchange const &copy);
-
-        std::map<std::string, float> getData();
-        std::vector<std::string> splitString(std::string str, char delimiter);
+        std::map <Date,float> parse_csv (const char *file, char delimiter);
+        Date parse_date(std::string date);
 };
 #endif

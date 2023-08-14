@@ -1,5 +1,5 @@
-SRCS = main.cpp
-NAME = Mutantstack
+SRCS = main.cpp BitcoinExchange.cpp
+NAME = btc
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
 CXX = c++
 OBJS = ${SRCS:.cpp=.o}
