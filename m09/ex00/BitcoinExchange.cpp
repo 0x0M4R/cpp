@@ -16,14 +16,16 @@ std::map <int,float>  BitcoinExchange::parse_csv(const char *file, char delimete
     if (!csv.is_open())
 		return temp; //fix incase data.csv doesnt open
     std::string line;
-	std::getline(csv, line); //skip header
+	std::getline(csv, line); //skip header /need fix
 	int i = 0;
 	while(std::getline(csv, line))
 	{
+        std::string::difference_type n = std::count(line.begin(), line.end(), delimeter);
+        if (n > 1)
+            print_error(-5,"");
 		size_t pos = line.find(delimeter);
         //check pos for delimiter
 		int date = parse_date(line.substr(0, pos));
-
 		float value = parse_value(line.substr(pos + 1, line.length() - pos));
 
         if (price_flag)
@@ -33,8 +35,14 @@ std::map <int,float>  BitcoinExchange::parse_csv(const char *file, char delimete
                 print_error(date,line.substr(0, pos));
                 continue;
             }
-            if(print_error(value,line))
+            if (pos == std::string::npos)
+            {
+                std::cout<<"Error: missing delimiter"<< std::endl;
                 continue;
+            }
+            if(print_error(value,""))
+                continue;
+
             std::cout << line.substr(0, pos) << " => " << value << " = "<<price.lower_bound(date)->second * value<<std::endl;
         }
         else
@@ -83,6 +91,10 @@ int parse_date(std::string date)
 }
 float parse_value(std::string value)
 {
+    if(!value.length())
+    {
+        return -4;
+    }
 	value = trim_ws(value);
 	float temp_f = 0;
 	std::istringstream o(value);
@@ -97,6 +109,7 @@ float parse_value(std::string value)
 }
 int print_error(float value, std::string line)
 {
+
     if (value == -1 )
     {
         std::cerr << "Error: bad input => " << line << std::endl;
@@ -107,9 +120,24 @@ int print_error(float value, std::string line)
         std::cerr << "Error: not a positive number." << std::endl;
         return 1;
     }
+    if (value == -4 )
+    {
+        std::cerr << "Error: no value found." << std::endl;
+        return 1;
+    }
+    if (value == -2 )
+    {
+        std::cerr << "Error: invalid value." << std::endl;
+        return 1;
+    }
     if (value > 1000 )
     {
         std::cerr << "Error: too large a number." << std::endl;
+        return 1;
+    }
+    if (value == -5 )
+    {
+        std::cerr << "Error: multiple demiters." << std::endl;
         return 1;
     }
     return 0;
