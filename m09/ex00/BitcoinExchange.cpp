@@ -68,7 +68,7 @@ int parse_date(std::string date)
     if (o >> temp_i && o.eof() && !o.fail())
 		;
     else
-	    std::cout << "invalid date : must be numbers" << std::endl;
+        return -1;
     int year = temp_i/10000;
     if( year < 0 || year > 9999 )
         return -1;
