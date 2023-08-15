@@ -5,19 +5,52 @@ BitcoinExchange::BitcoinExchange()
     price_flag = 0;
     price = parse_csv("./data.csv", ',');
     price_flag = 1;
-    parse_csv("./input.txt", '|');
 }
 BitcoinExchange::~BitcoinExchange()
 {
 }
-std::string BitcoinExchange::trim_ws(std::string s)
+std::map <int,float>  BitcoinExchange::parse_csv(const char *file, char delimeter)
+{
+	std::map <int,float> temp;
+	std::ifstream csv(file);
+    if (!csv.is_open())
+		return temp; //fix incase data.csv doesnt open
+    std::string line;
+	std::getline(csv, line); //skip header
+	int i = 0;
+	while(std::getline(csv, line))
+	{
+		size_t pos = line.find(delimeter);
+        //check pos for delimiter
+		int date = parse_date(line.substr(0, pos));
+
+		float value = parse_value(line.substr(pos + 1, line.length() - pos));
+
+        if (price_flag)
+        {
+            if(date == -1)
+            {
+                print_error(date,line.substr(0, pos));
+                continue;
+            }
+            if(print_error(value,line))
+                continue;
+            std::cout << line.substr(0, pos) << " => " << value << " = "<<price.lower_bound(date)->second * value<<std::endl;
+        }
+        else
+            temp[date] = value;
+		i++;
+    }
+	return temp;
+}
+std::string trim_ws(std::string s)
 {
 	const char* ws = " \t\r";
 	s.erase(s.find_last_not_of(ws) + 1);
 	s.erase(0, s.find_first_not_of(ws));
 	return s;
 }
-int BitcoinExchange::parse_date(std::string date)
+int parse_date(std::string date)
 {
 	date = trim_ws(date);
 	std::string::difference_type n = std::count(date.begin(), date.end(), '-');
@@ -48,7 +81,7 @@ int BitcoinExchange::parse_date(std::string date)
     return temp_i;
 
 }
-float BitcoinExchange::parse_value(std::string value)
+float parse_value(std::string value)
 {
 	value = trim_ws(value);
 	float temp_f = 0;
@@ -60,7 +93,6 @@ float BitcoinExchange::parse_value(std::string value)
         else
             return -3;
     }
-    // std::cout << "invalid value" << std::endl;
 	return (-2);
 }
 int print_error(float value, std::string line)
@@ -82,45 +114,11 @@ int print_error(float value, std::string line)
     }
     return 0;
 }
-std::map <int,float>  BitcoinExchange::parse_csv(const char *file, char delimeter)
-{
-	std::map <int,float> temp;
-	std::ifstream csv(file);
-    if (!csv.is_open())
-		return temp; //fix incase data.csv doesnt open
-    std::string line;
-	std::getline(csv, line); //skip header
-	int i = 0;
-	while(std::getline(csv, line))
-	{
-		size_t pos = line.find(delimeter);
 
-		int date = parse_date(line.substr(0, pos));
-
-		float value = parse_value(line.substr(pos + 1, line.length() - pos));
-
-        if (price_flag)
-        {
-            if(date == -1)
-            {
-                print_error(date,line.substr(0, pos));
-                continue;
-            }
-            if(print_error(value,line))
-                continue;
-            std::cout << line.substr(0, pos) << " => " << value << " = "<<price.lower_bound(date)->second * value<<std::endl;
-        }
-        else
-            temp[date] = value;
-		i++;
-    }
-	return temp;
-}
-
-std::ostream& operator<<( std::ostream& os, const Date& date ) {
-	os << date.year << "-";
-	(date.month < 10)? os << '0' << date.month: os << date.month;
-	os << "-";
-	(date.day < 10)? os << '0' << date.day: os << date.day;
-    return (os);
-}
+// std::ostream& operator<<( std::ostream& os, const Date& date ) {
+// 	os << date.year << "-";
+// 	(date.month < 10)? os << '0' << date.month: os << date.month;
+// 	os << "-";
+// 	(date.day < 10)? os << '0' << date.day: os << date.day;
+//     return (os);
+// }
