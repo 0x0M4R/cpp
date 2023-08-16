@@ -6,12 +6,6 @@
 #include <map>
 #include <algorithm>
 #include <utility>
-struct Date
-{
-    int year;
-    int month;
-    int day;
-};
 
 class BitcoinExchange
 {
