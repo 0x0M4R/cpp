@@ -12,7 +12,7 @@ class Span
         unsigned int    _n;
         Span();
     public:
-        Span( unsigned int );
+        Span( int n);
         Span( const Span& );
         ~Span( void );
         Span&               operator=( const Span& );
