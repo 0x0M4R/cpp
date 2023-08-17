@@ -1,13 +1,14 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 #include <iostream>
-#include <list>
+#include <vector>
 #include <exception>
-
+#include <algorithm>
+#include <list>
 class Span
 {
     private:
-        std::list<int>  _list;
+        std::vector<int>  _list;
         unsigned int    _n;
         Span();
     public:
@@ -16,11 +17,11 @@ class Span
         ~Span( void );
         Span&               operator=( const Span& );
         void                addNumber( int );
-        void                addNumber( std::list<int>::const_iterator, std::list<int>::const_iterator );
+        void                addNumber( std::vector<int>::const_iterator, std::vector<int>::const_iterator );
         unsigned int        longestSpan( void ) const;
         unsigned int        shortestSpan( void ) const;
 
-        const std::list< int >*   getList( void ) const;
+        const std::vector< int >*   getList( void ) const;
 };
 
 std::ostream& operator<<( std::ostream&, const Span& );
