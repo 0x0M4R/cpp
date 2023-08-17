@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include <list>
+#include <sstream>
 
 template < typename T >
 void    easyfind( T& container, int value )
