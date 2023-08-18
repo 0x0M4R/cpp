@@ -8,7 +8,7 @@
 class Span
 {
     private:
-        std::vector<int>  _list;
+        std::vector<int>  _v;
         unsigned int    _n;
         Span();
     public:
@@ -21,8 +21,5 @@ class Span
         unsigned int        longestSpan( void ) const;
         unsigned int        shortestSpan( void ) const;
 
-        const std::vector< int >*   getList( void ) const;
 };
-
-std::ostream& operator<<( std::ostream&, const Span& );
 #endif
