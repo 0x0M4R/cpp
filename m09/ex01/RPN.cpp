@@ -1,0 +1,69 @@
+#include "RPN.hpp"
+
+RPN::RPN(){}
+RPN::~RPN(){}
+RPN::RPN(char *input)
+{
+    for(int i=0; input[i]!='\0';i++)
+    {
+        if(isdigit(input[i]))
+        {
+            v.push_back(input[i] - '0');
+            std::cout<<v.back() << '\n';
+        }
+        else if(input[i] == '+' && v.size() > 1)
+        {
+           int a = v.back();
+            v.pop_back();
+            int b = v.back();
+            v.pop_back();
+            v.push_back(a + b);
+            std::cout << input[i] << " = " << v.back() << '\n';
+        }
+        else if(input[i] == '-' && v.size() > 1)
+        {
+            int a = v.back();
+            v.pop_back();
+            int b = v.back();
+            v.pop_back();
+            v.push_back(b - a);
+            std::cout << input[i] << " = " << v.back() << '\n';
+        }
+        else if(input[i] == '*' && v.size() > 1)
+        {
+            int a = v.back();
+            v.pop_back();
+            int b = v.back();
+            v.pop_back();
+            v.push_back(a * b);
+            std::cout << input[i] << " = " << v.back() << '\n';
+        }
+        else if(input[i] == '/' && v.size() > 1)
+        {
+            int a = v.back();
+            v.pop_back();
+            int b = v.back();
+            v.pop_back();
+            v.push_back(b / a);
+            std::cout << input[i] << " = " << v.back() << '\n';
+        }
+        else if(input[i] == ' ')
+            continue;
+        else
+        {
+            std::cout << "Invalid input." << std::endl;
+            return;
+        }
+    }
+    if (v.size() == 1)
+	{
+		int result = v.front();
+		v.pop_back();
+		std::cout << "Result: " << result << std::endl;
+	}
+	else
+	{
+		// insufficient operands
+		std::cout << "Invalid input." << std::endl;
+	}
+}

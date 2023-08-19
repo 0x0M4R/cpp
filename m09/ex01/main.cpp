@@ -7,7 +7,6 @@ int main(int ac,char **av)
         std::cout << "Error: invalid arguments." << std::endl;
         return 1;
     }
-    BitcoinExchange B;
-    B.parse_csv(av[1], '|');
+    RPN rpn(av[1]);
     return 0;
 }
