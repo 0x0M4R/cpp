@@ -11,8 +11,8 @@ class RPN
 {
     private:
         std::vector<int> v;
-    public:
         RPN();
+    public:
         RPN(char *input);
         ~RPN();
         RPN& operator=(RPN const &copy);
