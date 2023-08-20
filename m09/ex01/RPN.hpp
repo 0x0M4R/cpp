@@ -10,7 +10,7 @@
 class RPN
 {
     private:
-        std::vector<int> v;
+        std::vector<double> v;
         RPN();
     public:
         RPN(char *input);

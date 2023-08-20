@@ -27,33 +27,33 @@ RPN::RPN(char *input)
         }
         else if(input[i] == '+' && v.size() > 1)
         {
-           int a = v.back();
+            double a = v.back();
             v.pop_back();
-            int b = v.back();
+            double b = v.back();
             v.pop_back();
             v.push_back(a + b);
         }
         else if(input[i] == '-' && v.size() > 1)
         {
-            int a = v.back();
+            double a = v.back();
             v.pop_back();
-            int b = v.back();
+            double b = v.back();
             v.pop_back();
             v.push_back(b - a);
         }
         else if(input[i] == '*' && v.size() > 1)
         {
-            int a = v.back();
+            double a = v.back();
             v.pop_back();
-            int b = v.back();
+            double b = v.back();
             v.pop_back();
             v.push_back(a * b);
         }
         else if(input[i] == '/' && v.size() > 1)
         {
-            int a = v.back();
+            double a = v.back();
             v.pop_back();
-            int b = v.back();
+            double b = v.back();
             v.pop_back();
             v.push_back(b / a);
         }
@@ -67,7 +67,7 @@ RPN::RPN(char *input)
     }
     if (v.size() == 1)
 	{
-		int result = v.front();
+		double result = v.front();
 		v.pop_back();
 		std::cout << "Result: " << result << std::endl;
 	}
