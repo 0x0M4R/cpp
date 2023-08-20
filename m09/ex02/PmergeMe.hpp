@@ -23,7 +23,7 @@ class PmergeMe
         PmergeMe(PmergeMe const &copy);
         void execute();
 };
-bool check_sorted();
+bool check_sorted(std::list<int> l);
 std::list<int> sort_l(std::list<int> k);
 std::deque<int> sort_d(std::deque<int> k);
 std::list<int> merge_l(std::list<int> left,std::list<int> right);

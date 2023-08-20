@@ -46,7 +46,15 @@ PmergeMe& PmergeMe::operator=( PmergeMe const &copy )
     }
     return *this;
 }
-
+bool check_sorted(std::deque<int> d )
+{
+    std::deque<int> temp(d);
+    std::sort(temp.begin(), temp.end());
+    if(temp == d)
+        return 1;
+    else
+        return 0;
+}
 void PmergeMe::execute()
 {
     if(parse_error)
@@ -54,7 +62,7 @@ void PmergeMe::execute()
         std::cout << "Error : Cannot execute because of parsing error!" <<std::endl;
         return ;
     }
-    if(std::is_sorted(l.begin(), l.end()))
+    if(check_sorted(d))
     {
         std::cout << "Error : Sequence already sorted!" <<std::endl;
         return ;
@@ -111,8 +119,10 @@ std::list<int>  sort_l(std::list<int> k)
 {
     if (k.size() <= 1) return k;
     int mid = k.size() / 2;
-    std::list<int> left(k.begin(),std::next(k.begin(),mid));
-    std::list<int> right(std::next(k.begin(),mid),k.end());
+    std::list<int> ::iterator it = k.begin();
+    std::advance(it,mid);
+    std::list<int> left(k.begin(),it);
+    std::list<int> right(it,k.end());
     // Recursively sort the left and right halves
     left = sort_l(left);
     right = sort_l(right);
@@ -151,8 +161,10 @@ std::deque<int>  sort_d(std::deque<int> k)
 {
     if (k.size() <= 1) return k;
     int mid = k.size() / 2;
-    std::deque<int> left(k.begin(),std::next(k.begin(),mid));
-    std::deque<int> right(std::next(k.begin(),mid),k.end());
+    std::deque<int>::iterator it = k.begin();
+    std::advance(it,mid);
+    std::deque<int> left(k.begin(),it);
+    std::deque<int> right(it,k.end());
     // Recursively sort the left and right halves
     left = sort_d(left);
     right = sort_d(right);
