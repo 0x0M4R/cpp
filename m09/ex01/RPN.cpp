@@ -2,6 +2,16 @@
 
 RPN::RPN(){}
 RPN::~RPN(){}
+RPN::RPN(RPN const &copy)
+{
+    *this=copy;
+}
+RPN& RPN::operator=( RPN const &copy ) 
+{
+    if ( this != &copy )
+        this->v = copy.v;
+    return *this;
+}
 RPN::RPN(char *input)
 {
     for(int i=0; input[i]!='\0';i++)
@@ -63,7 +73,6 @@ RPN::RPN(char *input)
 	}
 	else
 	{
-		// insufficient operands
 		std::cout << "Invalid input." << std::endl;
 	}
 }

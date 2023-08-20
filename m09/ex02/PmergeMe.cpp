@@ -18,25 +18,33 @@ PmergeMe::PmergeMe(char **input, int n)
             else
             {
                 std::cout << "Error : Only positive integers allowed" << std::endl;
-                break ; //check if object still alive
+                break ;
             }
         }
         else
         {
             std::cout << "Error : Invalid input" << std::endl;
-            break;
+            break ;
         }
         o.clear();
-        // std::cout << arr[i] ;
     }
     if (l.size() != (unsigned long)n)
         parse_error = 1;
     else
         parse_error = 0;
-    // std::list<int> l( arr, arr + sizeof( arr ) / sizeof( int ) );
-    // std::deque<int> d( arr, arr + sizeof( arr ) / sizeof( int ) );
-    // this->l = l;
-    // this->d = d;
+}
+PmergeMe::PmergeMe(PmergeMe const &copy)
+{
+    *this=copy;
+}
+PmergeMe& PmergeMe::operator=( PmergeMe const &copy ) 
+{
+    if ( this != &copy ) {
+        this->l = copy.l;
+        this->d = copy.d;
+        this->parse_error = copy.parse_error;
+    }
+    return *this;
 }
 void PmergeMe::execute()
 {
