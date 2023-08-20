@@ -46,11 +46,17 @@ PmergeMe& PmergeMe::operator=( PmergeMe const &copy )
     }
     return *this;
 }
+
 void PmergeMe::execute()
 {
     if(parse_error)
     {
-        std::cout << "Cannot execute because of parsing error!" <<std::endl;
+        std::cout << "Error : Cannot execute because of parsing error!" <<std::endl;
+        return ;
+    }
+    if(std::is_sorted(l.begin(), l.end()))
+    {
+        std::cout << "Error : Sequence already sorted!" <<std::endl;
         return ;
     }
     std::cout << "Before : ";
@@ -72,6 +78,7 @@ void PmergeMe::execute()
     std::cout << "Time to process a range of " << l.size() << " elements with std::list container: " << time1 << " us" << std::endl;
     std::cout << "Time to process a range of " << d.size() << " elements with std::deque container: " << time2 << " us" << std::endl;
 }
+
 std::list<int> merge_l(std::list<int> left,std::list<int> right)
 {
     std::list<int> result;

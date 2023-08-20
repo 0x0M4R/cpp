@@ -19,7 +19,11 @@ RPN::RPN(char *input)
         if(isdigit(input[i]))
         {
             v.push_back(input[i] - '0');
-            std::cout<<v.back() << '\n';
+            if (input[i + 1] && isdigit(input[i+ 1]))
+            {
+                std::cout << "Error : Invalid input." << std::endl;
+                return;
+            }
         }
         else if(input[i] == '+' && v.size() > 1)
         {
@@ -61,7 +65,7 @@ RPN::RPN(char *input)
             continue;
         else
         {
-            std::cout << "Invalid input." << std::endl;
+            std::cout << "Error : Invalid input." << std::endl;
             return;
         }
     }
@@ -73,6 +77,6 @@ RPN::RPN(char *input)
 	}
 	else
 	{
-		std::cout << "Invalid input." << std::endl;
+		std::cout << "Error : Invalid input." << std::endl;
 	}
 }

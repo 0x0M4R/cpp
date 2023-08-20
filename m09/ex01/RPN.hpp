@@ -18,5 +18,4 @@ class RPN
         RPN& operator=(RPN const &copy);
         RPN(RPN const &copy);
 };
-// std::ostream& operator<<( std::ostream&, const Date& );
 #endif

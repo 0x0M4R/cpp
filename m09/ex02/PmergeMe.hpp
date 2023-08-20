@@ -24,9 +24,9 @@ class PmergeMe
         void execute();
         // std::list<int> sort_l(std::list<int> k);
 };
+bool check_sorted();
 std::list<int> sort_l(std::list<int> k);
 std::deque<int> sort_d(std::deque<int> k);
 std::list<int> merge_l(std::list<int> left,std::list<int> right);
 std::deque<int> merge_d(std::deque<int> left,std::deque<int> right);
-// std::ostream& operator<<( std::ostream&, const Date& );
 #endif
