@@ -32,7 +32,6 @@ RPN::RPN(char *input)
             int b = v.back();
             v.pop_back();
             v.push_back(a + b);
-            std::cout << input[i] << " = " << v.back() << '\n';
         }
         else if(input[i] == '-' && v.size() > 1)
         {
@@ -41,7 +40,6 @@ RPN::RPN(char *input)
             int b = v.back();
             v.pop_back();
             v.push_back(b - a);
-            std::cout << input[i] << " = " << v.back() << '\n';
         }
         else if(input[i] == '*' && v.size() > 1)
         {
@@ -50,7 +48,6 @@ RPN::RPN(char *input)
             int b = v.back();
             v.pop_back();
             v.push_back(a * b);
-            std::cout << input[i] << " = " << v.back() << '\n';
         }
         else if(input[i] == '/' && v.size() > 1)
         {
@@ -59,7 +56,6 @@ RPN::RPN(char *input)
             int b = v.back();
             v.pop_back();
             v.push_back(b / a);
-            std::cout << input[i] << " = " << v.back() << '\n';
         }
         else if(input[i] == ' ')
             continue;

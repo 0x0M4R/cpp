@@ -22,7 +22,6 @@ class PmergeMe
         PmergeMe& operator=(PmergeMe const &copy);
         PmergeMe(PmergeMe const &copy);
         void execute();
-        // std::list<int> sort_l(std::list<int> k);
 };
 bool check_sorted();
 std::list<int> sort_l(std::list<int> k);

@@ -14,17 +14,27 @@ std::map <int,float>  BitcoinExchange::parse_csv(const char *file, char delimete
 	std::map <int,float> temp;
 	std::ifstream csv(file);
     if (!csv.is_open())
-		return temp; //fix incase data.csv doesnt open
+    {
+        std::cout << "Error: Could not open file." << std::endl;
+		return temp;
+    } //fix incase data.csv doesnt open
     std::string line;
 	std::getline(csv, line); //skip header /need fix
+    if (line.size() == 0)
+    {
+            print_error(-6,"");
+            return temp;
+    }
 	int i = 0;
 	while(std::getline(csv, line))
 	{
         std::string::difference_type n = std::count(line.begin(), line.end(), delimeter);
         if (n > 1)
+        {
             print_error(-5,"");
+            continue;
+        }
 		size_t pos = line.find(delimeter);
-        //check pos for delimiter
 		int date = parse_date(line.substr(0, pos));
 		float value = parse_value(line.substr(pos + 1, line.length() - pos));
 
@@ -42,8 +52,15 @@ std::map <int,float>  BitcoinExchange::parse_csv(const char *file, char delimete
             }
             if(print_error(value,""))
                 continue;
-
-            std::cout << line.substr(0, pos) << " => " << value << " = "<<price.lower_bound(date)->second * value<<std::endl;
+            if(price.count(date) == 0)
+            {
+                std::map<int,float>::iterator i = price.lower_bound(date);
+                if (i != price.begin())
+                    i--;
+                std::cout << line.substr(0, pos) << " => " << value << " = "<<i->second * value<<std::endl;
+            }
+            else
+                std::cout << line.substr(0, pos) << " => " << value << " = "<<price.lower_bound(date)->second * value<<std::endl;
         }
         else
             temp[date] = value;
@@ -138,6 +155,11 @@ int print_error(float value, std::string line)
     if (value == -5 )
     {
         std::cerr << "Error: multiple demiters." << std::endl;
+        return 1;
+    }
+    if (value == -6 )
+    {
+        std::cerr << "Error: empty header." << std::endl;
         return 1;
     }
     return 0;
