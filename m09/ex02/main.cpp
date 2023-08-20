@@ -7,6 +7,7 @@ int main(int ac,char **av)
         std::cout << "Error: invalid arguments." << std::endl;
         return 1;
     }
-    PmergeMe rpn(av + 1, ac - 1);
+    PmergeMe seq(av + 1, ac - 1);
+    seq.execute();
     return 0;
 }

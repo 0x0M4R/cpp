@@ -14,9 +14,9 @@
             "request": "launch",
             
             "preLaunchTask": "C/C++: clang++ build active file", // The name of the task defined above
-            "program": "${fileDirname}/btc",
+            "program": "${fileDirname}/./PmergeMe",
             "cwd": "${fileDirname}",
-            "args": ["input.txt"],
+            "args": ["8","3","4","12","5","6"],
             "MIMode": "lldb",
             // ...
         }
